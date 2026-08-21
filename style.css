@@ -637,3 +637,19 @@ header .logo span{
 .muhurtham-card .muhurtham-row{display:block;padding:16px 24px}
 .muhurtham-card .muhurtham-row span{display:block}
 @media(max-width:800px){.muhurtham-program-title{padding:13px 15px}.muhurtham-card .muhurtham-row{padding:13px 15px}}
+
+
+/* V2 TRADITIONAL ENHANCEMENT — additional sacred rituals */
+.event-photo.sapthapadi{background-image:url('assets/sapthapadi.jpg')}
+.event-photo.ammi{background-image:url('assets/ammi-midhithal.jpg')}
+.event-photo.metti{background-image:url('assets/metti-dharanam.jpg')}
+.event-photo.arundhati{background-image:url('assets/arundhati-darshan.jpg')}
+.event-photo.asirvadam{background-image:url('assets/asirvadam.jpg')}
+.event-photo.bhojanam{background-image:url('assets/tamil-iyer-bhojanam.jpg')}
+
+.muhurtham-card .muhurtham-row span{display:flex;align-items:center;justify-content:flex-start;gap:18px}
+.muhurtham-card .muhurtham-row b{min-width:28px}
+.feast-event .event-photo{background-size:cover;background-position:center}
+@media(min-width:900px){
+  .feast-event .event-photo{min-height:300px}
+}
