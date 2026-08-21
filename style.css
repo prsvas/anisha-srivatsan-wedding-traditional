@@ -558,47 +558,10 @@ header .logo span{
   order:11;
 }
 
-/* Final artwork slide: the countdown is deliberately placed in the
-   small strip between the baked-in hashtag and the Print/Save button.
-   It is text only — completely transparent background. */
-.final-gratitude .closing-countdown-wrap{
-  position:absolute !important;
-  left:50% !important;
-  top:auto !important;
-  bottom:78px !important;
-  transform:translateX(-50%) !important;
-  z-index:30 !important;
-  width:min(94vw,760px) !important;
-  margin:0 !important;
-  padding:0 !important;
-  text-align:center !important;
-  pointer-events:none !important;
-}
+/* Final artwork slide: no countdown is shown. */
+.final-gratitude .closing-countdown-wrap,
 .final-gratitude .closing-countdown{
-  display:inline-block !important;
-  position:static !important;
-  margin:0 !important;
-  padding:0 !important;
-  background:transparent !important;
-  background-color:transparent !important;
-  border:0 !important;
-  border-width:0 !important;
-  border-radius:0 !important;
-  box-shadow:none !important;
-  color:#2f2923 !important;
-  text-shadow:0 1px 0 rgba(255,250,242,.72) !important;
-  font-family:"Cormorant Garamond",Georgia,serif !important;
-  font-size:clamp(21px,3vw,36px) !important;
-  font-weight:600 !important;
-  line-height:1 !important;
-  letter-spacing:.04em !important;
-  white-space:nowrap !important;
-}
-
-/* Keep the button below the clock with a clear visual separation. */
-.final-gratitude .print-invitation{
-  bottom:24px !important;
-  z-index:31 !important;
+  display:none !important;
 }
 
 @media(max-width:600px){
@@ -607,12 +570,4 @@ header .logo span{
   .hero #countdown{font-size:clamp(22px,5.8vw,30px) !important}
   .hero .hashtag{margin-top:12px !important}
 
-  .final-gratitude .closing-countdown-wrap{
-    bottom:78px !important;
-    width:96vw !important;
-  }
-  .final-gratitude .closing-countdown{
-    font-size:clamp(18px,4.8vw,27px) !important;
-    white-space:nowrap !important;
-  }
 }
