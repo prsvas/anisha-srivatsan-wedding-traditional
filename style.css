@@ -178,7 +178,7 @@ header .logo span{
 .final-gratitude .closing-photo{position:absolute;inset:0;background-image:url("assets/closing.jpg");background-size:contain;background-position:center;background-repeat:no-repeat;background-color:#f7f3ea}
 .final-gratitude .closing-shade,.final-gratitude .closing-content{display:none!important}
 .closing-logo-coin{position:absolute;top:clamp(22px,5vh,55px);left:clamp(18px,5vw,70px);z-index:6;width:54px;height:54px;border:2px solid var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;background:linear-gradient(145deg,#fff9e9,#ead39a 48%,#fff7df);color:#8f6d28;font-family:"Cormorant Garamond",Georgia,serif;font-size:30px;font-weight:600;font-style:italic;letter-spacing:-.12em;box-shadow:inset 0 0 0 2px rgba(255,255,255,.55),inset 0 0 0 4px rgba(184,154,90,.22),0 4px 14px rgba(0,0,0,.14)}
-.closing-countdown-wrap{position:absolute;left:50%;top:auto;bottom:13%;transform:translate(-50%,-50%);z-index:7;text-align:center;pointer-events:none;width:min(94vw,760px)}
+.closing-countdown-wrap{position:absolute;left:50%;top:60%;transform:translate(-50%,-50%);z-index:7;text-align:center;pointer-events:none;width:min(94vw,760px)}
 .closing-countdown{display:inline-block;font-family:"Cormorant Garamond",Georgia,serif;font-size:clamp(22px,3.1vw,38px);font-weight:700;letter-spacing:.045em;color:#2f2923;line-height:1.05;background:rgba(255,250,242,.96);border:2px solid #3b332b;border-radius:10px;padding:8px 17px 9px;box-shadow:0 5px 16px rgba(0,0,0,.16);text-shadow:none;white-space:nowrap}
 @media(max-width:600px){.closing-logo-coin{top:16px;left:14px;width:46px;height:46px;font-size:26px}.closing-countdown-wrap{top:66%;width:96vw}.closing-countdown{font-size:clamp(18px,4.8vw,27px);padding:7px 11px 8px}}
 
@@ -492,22 +492,19 @@ header .logo span{
 .calendar-close{position:absolute;right:10px;top:5px;border:0;background:none;color:var(--green);font-size:30px;cursor:pointer}.calendar-choice{display:block;width:100%;margin:10px 0;padding:12px 16px;border:1px solid var(--gold);background:transparent;color:var(--green);font:600 10px Inter,sans-serif;letter-spacing:.12em;cursor:pointer}.calendar-choice:hover{background:var(--green);color:#fff}
 @media(max-width:600px){.calendar-menu-inner{padding:32px 20px 22px}.calendar-menu-inner h3{font-size:32px}}
 
-/* ===== VENUE IMAGE FIX — VERSION 2 =====
-   Preserve the existing venue layout while showing the complete
-   venue artwork without cropping.
-*/
+
+/* FINAL VENUE FIX — show the complete venue photograph without cropping */
 .venue-image{
   background-size:contain !important;
   background-repeat:no-repeat !important;
   background-position:center !important;
-  background-color:transparent !important;
+  background-color:var(--ivory) !important;
 }
-
 @media(max-width:800px){
   .venue-image{
     background-size:contain !important;
     background-repeat:no-repeat !important;
     background-position:center !important;
-    background-color:transparent !important;
+    background-color:var(--ivory) !important;
   }
 }
