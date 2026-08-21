@@ -514,7 +514,18 @@ header .logo span{
     left:50% !important;
     transform:translateX(-50%) !important;
     z-index:20 !important;
-    width:min(94vw,760px);
+    width:min(94vw,760px) !important;
+    text-align:center !important;
+  }
+
+  .closing-countdown{
+    background:transparent !important;
+    border:0 !important;
+    box-shadow:none !important;
+    padding:0 !important;
+    color:#2f2923 !important;
+    text-shadow:0 1px 0 rgba(255,250,242,.55) !important;
+    white-space:nowrap !important;
   }
 }
 
