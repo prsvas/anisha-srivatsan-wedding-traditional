@@ -510,7 +510,7 @@ header .logo span{
 @media (min-width:601px){
   .closing-countdown-wrap{
     top:auto !important;
-    bottom:12% !important;
+    bottom:82px !important;
     left:50% !important;
     transform:translateX(-50%) !important;
     z-index:20 !important;
