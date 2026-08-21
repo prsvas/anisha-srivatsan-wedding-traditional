@@ -609,66 +609,31 @@ header .logo span{
   .hero .hero-countdown-wrap { margin-top: 12px !important; }
 }
 
+/* VERSION 2 — TRADITIONAL ENHANCEMENTS */
+.traditional-opening{background:var(--cream);position:relative;overflow:hidden}
+.traditional-opening-inner{max-width:1120px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:clamp(35px,6vw,90px);align-items:center}
+.traditional-art{background:var(--paper);border:1px solid rgba(184,154,90,.42);padding:12px;box-shadow:0 16px 45px rgba(0,0,0,.08)}
+.traditional-art img{display:block;width:100%;height:auto}
+.traditional-copy h2{font-family:"Cormorant Garamond",Georgia,serif;font-weight:400;font-size:clamp(42px,5vw,70px);line-height:.98;margin:12px 0 22px;color:var(--charcoal)}
+.traditional-lead{font-size:20px;line-height:1.7}
+.traditional-copy p:not(.traditional-lead){font-family:"Cormorant Garamond",Georgia,serif;font-size:22px;line-height:1.55}
+.traditional-ornament{text-align:center;color:var(--gold);font-size:32px;margin:20px 0}
+.traditional-points{display:flex;flex-wrap:wrap;gap:10px;margin-top:25px}
+.traditional-points span{border:1px solid rgba(184,154,90,.55);padding:9px 13px;font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:var(--green)}
+.muhurtham-section{background:var(--paper);position:relative}
+.muhurtham-card{max-width:760px;margin:45px auto 0;border:1px solid rgba(184,154,90,.6);background:rgba(255,255,255,.35);box-shadow:0 15px 40px rgba(0,0,0,.06)}
+.muhurtham-heading,.muhurtham-row{display:grid;grid-template-columns:1fr 160px;gap:20px;align-items:center;padding:15px 24px}
+.muhurtham-heading{background:var(--green);color:#fff;font-size:11px;letter-spacing:.16em;text-transform:uppercase}
+.muhurtham-row{border-bottom:1px solid rgba(184,154,90,.28);font-family:"Cormorant Garamond",Georgia,serif;font-size:22px}
+.muhurtham-row span:last-child{text-align:right;color:var(--green);font-family:Inter,Arial,sans-serif;font-size:13px;letter-spacing:.08em}
+.muhurtham-row b{display:inline-block;color:var(--gold);font-family:Inter,Arial,sans-serif;font-size:11px;margin-right:12px;letter-spacing:.1em}
+.muhurtham-note{text-align:center;margin:0;padding:16px;font-size:13px;font-style:italic;color:#75684e}
+@media(max-width:800px){.traditional-opening-inner{grid-template-columns:1fr}.traditional-art{max-width:560px;margin:auto}.muhurtham-heading,.muhurtham-row{grid-template-columns:1fr 105px;padding:13px 15px}.muhurtham-row{font-size:19px}}
 
-/* =========================================================
-   V3 FINAL GUARANTEE
-   Desktop + mobile: hero countdown is text-only and transparent.
-   Final/With Gratitude slide: countdown is never displayed.
-   Print card: no overlay elements are permitted over the artwork.
-========================================================= */
-.hero .hero-countdown-wrap,
-.hero .countdown,
-.hero #countdown {
-  background: transparent !important;
-  border: 0 !important;
-  box-shadow: none !important;
-  outline: 0 !important;
-}
-.hero .hero-countdown-wrap {
-  position: static !important;
-  display: block !important;
-  width: auto !important;
-  margin: 14px auto 0 !important;
-  padding: 0 !important;
-  text-align: center !important;
-}
-.hero #countdown {
-  position: static !important;
-  display: inline-block !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  border-radius: 0 !important;
-  color: #fff !important;
-  text-shadow: 0 1px 8px rgba(0,0,0,.28) !important;
-  white-space: nowrap !important;
-}
-.final-gratitude .closing-countdown-wrap,
-.final-gratitude .closing-countdown,
-#closing .hero-countdown-wrap,
-#closing #countdown {
-  display: none !important;
-  visibility: hidden !important;
-}
-/* The closing artwork itself contains no countdown. */
-.final-gratitude .closing-photo {
-  background-size: contain !important;
-  background-position: center !important;
-  background-repeat: no-repeat !important;
-}
-/* Print-card mode: only the card image is visible; no HTML text box can mask it. */
-body.print-card-active #printCard,
-body.print-card-active #printCard .print-card-art {
-  z-index: 999999 !important;
-}
-body.print-card-active #printCard .print-card-art {
-  object-fit: fill !important;
-}
 
-/* ROLLBACK STABLE: final slide must contain artwork only — never a countdown. */
-#closing .closing-countdown-wrap,
-#closing .closing-countdown,
-#closing #closingCountdown {
-  display: none !important;
-  visibility: hidden !important;
-  opacity: 0 !important;
-}
+/* V2 Muhurtham refinement — one ceremony window, no individual ritual timings. */
+.muhurtham-time{margin:18px 0 8px!important;color:var(--gold);font-family:Inter,Arial,sans-serif!important;font-size:13px!important;font-weight:600;letter-spacing:.16em;text-transform:uppercase}
+.muhurtham-program-title{background:var(--green);color:#fff;padding:15px 24px;text-align:center;font-family:Inter,Arial,sans-serif;font-size:11px;letter-spacing:.16em;text-transform:uppercase}
+.muhurtham-card .muhurtham-row{display:block;padding:16px 24px}
+.muhurtham-card .muhurtham-row span{display:block}
+@media(max-width:800px){.muhurtham-program-title{padding:13px 15px}.muhurtham-card .muhurtham-row{padding:13px 15px}}
