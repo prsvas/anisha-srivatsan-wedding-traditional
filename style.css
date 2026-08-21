@@ -571,3 +571,95 @@ header .logo span{
   .hero .hashtag{margin-top:12px !important}
 
 }
+
+
+/* V2 FINAL COUNTDOWN FIX
+   - Hero/first-slide countdown is text-only and fully transparent.
+   - Final/With Gratitude slide never displays a countdown.
+*/
+.hero .hero-countdown-wrap {
+  position: static !important;
+  display: block !important;
+  margin: 14px auto 0 !important;
+  width: auto !important;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  text-align: center !important;
+}
+.hero #countdown {
+  position: static !important;
+  display: inline-block !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  color: #fff !important;
+  text-shadow: 0 1px 8px rgba(0,0,0,.28) !important;
+}
+.final-gratitude .closing-countdown-wrap,
+.final-gratitude .closing-countdown,
+#closing .hero-countdown-wrap,
+#closing #countdown {
+  display: none !important;
+}
+@media (max-width: 600px) {
+  .hero .hero-countdown-wrap { margin-top: 12px !important; }
+}
+
+
+/* =========================================================
+   V3 FINAL GUARANTEE
+   Desktop + mobile: hero countdown is text-only and transparent.
+   Final/With Gratitude slide: countdown is never displayed.
+   Print card: no overlay elements are permitted over the artwork.
+========================================================= */
+.hero .hero-countdown-wrap,
+.hero .countdown,
+.hero #countdown {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  outline: 0 !important;
+}
+.hero .hero-countdown-wrap {
+  position: static !important;
+  display: block !important;
+  width: auto !important;
+  margin: 14px auto 0 !important;
+  padding: 0 !important;
+  text-align: center !important;
+}
+.hero #countdown {
+  position: static !important;
+  display: inline-block !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  color: #fff !important;
+  text-shadow: 0 1px 8px rgba(0,0,0,.28) !important;
+  white-space: nowrap !important;
+}
+.final-gratitude .closing-countdown-wrap,
+.final-gratitude .closing-countdown,
+#closing .hero-countdown-wrap,
+#closing #countdown {
+  display: none !important;
+  visibility: hidden !important;
+}
+/* The closing artwork itself contains no countdown. */
+.final-gratitude .closing-photo {
+  background-size: contain !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+}
+/* Print-card mode: only the card image is visible; no HTML text box can mask it. */
+body.print-card-active #printCard,
+body.print-card-active #printCard .print-card-art {
+  z-index: 999999 !important;
+}
+body.print-card-active #printCard .print-card-art {
+  object-fit: fill !important;
+}
