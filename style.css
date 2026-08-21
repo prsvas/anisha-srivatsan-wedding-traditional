@@ -663,3 +663,12 @@ body.print-card-active #printCard .print-card-art {
 body.print-card-active #printCard .print-card-art {
   object-fit: fill !important;
 }
+
+/* ROLLBACK STABLE: final slide must contain artwork only — never a countdown. */
+#closing .closing-countdown-wrap,
+#closing .closing-countdown,
+#closing #closingCountdown {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+}
