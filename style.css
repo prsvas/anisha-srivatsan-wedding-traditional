@@ -664,20 +664,11 @@ body.print-card-active #printCard .print-card-art {
   object-fit: fill !important;
 }
 
-/* V4 FINAL OVERRIDES
-   First slide countdown is text-only and transparent.
-   Final With Gratitude slide has no countdown.
-*/
-.hero .hero-countdown-wrap,
-.hero #countdown {
-  background: transparent !important;
-  border: 0 !important;
-  box-shadow: none !important;
-  text-shadow: none !important;
-}
-.final-gratitude .closing-countdown-wrap,
-.final-gratitude .closing-countdown,
+/* ROLLBACK STABLE: final slide must contain artwork only — never a countdown. */
 #closing .closing-countdown-wrap,
-#closing .closing-countdown {
+#closing .closing-countdown,
+#closing #closingCountdown {
   display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
 }
