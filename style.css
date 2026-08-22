@@ -653,3 +653,5 @@ header .logo span{
 @media(min-width:900px){
   .feast-event .event-photo{min-height:300px}
 }
+
+.event-photo.nelangu{background-image:url('assets/nelangu.jpg');background-size:cover;background-position:center}
