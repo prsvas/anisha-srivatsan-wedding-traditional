@@ -841,58 +841,71 @@ header .logo span{
 }
 
 /* =========================================================
-   SAFE FINAL FIX — MALAI MAATRAL + OONJAL
-   CSS ONLY. Do not alter HTML or JavaScript.
-   Complete image visible; no fixed-height cropping.
+   FINAL MALAI MAATRAL PRESENTATION FIX
+   Scoped ONLY to the Malai Maatral event image.
+   The HTML already uses:
+   assets/hq-malai-maatral.jpg
+   so no HTML or JavaScript change is required.
    ========================================================= */
 
-.events .event-photo.malai,
-.events .event-photo.oonjal {
+/* Keep the event row aligned while allowing the photo to show fully. */
+.events .event:has(.event-photo.malai) {
+  min-height: 0 !important;
+  align-items: start !important;
+}
+
+/* Remove every fixed-height constraint from this one photo frame. */
+.events .event-photo.malai {
+  width: 100% !important;
   height: auto !important;
   min-height: 0 !important;
   max-height: none !important;
-  width: 100% !important;
+  aspect-ratio: auto !important;
+  padding: 0 !important;
   overflow: visible !important;
   display: flex !important;
-  align-items: center !important;
+  align-items: flex-start !important;
   justify-content: center !important;
   box-sizing: border-box !important;
-  padding: 0 !important;
   background: var(--ivory) !important;
   background-image: none !important;
-  aspect-ratio: auto !important;
 }
 
-.events .event-photo.malai img,
-.events .event-photo.oonjal img {
+/* Show the entire source photograph at its natural proportion.
+   Nothing is cropped, stretched or forced into a 320/430px frame. */
+.events .event-photo.malai img {
   display: block !important;
   width: 100% !important;
   height: auto !important;
+  min-width: 0 !important;
+  min-height: 0 !important;
   max-width: 100% !important;
   max-height: none !important;
   object-fit: contain !important;
-  object-position: center center !important;
+  object-position: center top !important;
   margin: 0 !important;
   transform: none !important;
+  flex: 0 1 auto !important;
 }
 
+/* Mobile: retain the same complete-image treatment. */
 @media (max-width: 800px) {
-  .events .event-photo.malai,
-  .events .event-photo.oonjal {
+  .events .event-photo.malai {
     width: 100% !important;
     height: auto !important;
     min-height: 0 !important;
     max-height: none !important;
+    aspect-ratio: auto !important;
     overflow: visible !important;
   }
 
-  .events .event-photo.malai img,
-  .events .event-photo.oonjal img {
+  .events .event-photo.malai img {
     width: 100% !important;
     height: auto !important;
     max-width: 100% !important;
     max-height: none !important;
     object-fit: contain !important;
+    object-position: center top !important;
   }
 }
 
