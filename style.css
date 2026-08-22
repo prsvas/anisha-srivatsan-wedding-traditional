@@ -656,56 +656,45 @@ header .logo span{
 
 .event-photo.nelangu{background-image:url('assets/nelangu.jpg');background-size:cover;background-position:center}
 
-/* V2 addition: full second slide — An Auspicious Beginning */
-.auspicious-slide{
-  position:relative;
-  min-height:100svh;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  padding:clamp(18px,3vw,42px);
-  background:#eee7d8;
-  overflow:hidden;
-}
-.auspicious-frame{
-  width:min(92vw, 900px);
-  max-height:94svh;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  box-shadow:0 18px 55px rgba(64,44,18,.16);
-  border-radius:4px;
-  overflow:hidden;
-  background:#f7f0df;
-}
-.auspicious-frame img{
-  display:block;
-  width:100%;
-  height:auto;
-  max-height:94svh;
-  object-fit:contain;
-}
-.auspicious-slide .slide-down{bottom:20px;z-index:3}
-@media (max-width:700px){
-  .auspicious-slide{padding:10px;min-height:100svh}
-  .auspicious-frame{width:96vw;max-height:92svh;box-shadow:0 10px 30px rgba(64,44,18,.14)}
-}
 
 
-/* FINAL V2 EVENT IMAGE UPDATE — 22 AUG 2026
-   Supplied final event artwork is shown in full inside each frame.
-   No event artwork is cropped by the website.
-*/
+/* FINAL V2 EVENT PRESENTATION — focused, full-frame artwork
+   Event images are rendered as real <img> elements.
+   object-fit: contain prevents cropping; constrained dimensions reduce
+   unnecessary upscaling of the supplied artwork. */
 .event-photo{
-  background-size:contain !important;
-  background-repeat:no-repeat !important;
-  background-position:center !important;
-  background-color:var(--ivory) !important;
+  height:320px;
+  min-height:320px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+  background:var(--ivory);
+  background-image:none !important;
+  border-radius:2px;
 }
-.event-photo.nelangu,
-.feast-event .event-photo{
-  background-size:contain !important;
-  background-repeat:no-repeat !important;
-  background-position:center !important;
-  background-color:var(--ivory) !important;
+.event-photo img{
+  display:block;
+  width:auto;
+  height:auto;
+  max-width:100%;
+  max-height:100%;
+  object-fit:contain;
+  object-position:center;
+  flex:0 1 auto;
+}
+.feast-event .event-photo,
+.event-photo.nelangu{
+  background:var(--ivory);
+  min-height:320px;
+}
+@media(max-width:899px){
+  .event-photo{
+    height:300px;
+    min-height:300px;
+  }
+  .feast-event .event-photo,
+  .event-photo.nelangu{
+    min-height:300px;
+  }
 }
