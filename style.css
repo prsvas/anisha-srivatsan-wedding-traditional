@@ -764,3 +764,117 @@ header .logo span{
 .language-option{display:flex!important;align-items:center;gap:10px;margin:0!important;padding:11px 12px;border:1px solid #c6ae7a;background:#fffaf0;border-radius:4px;cursor:pointer;font:500 14px Inter,Arial,sans-serif!important;letter-spacing:0!important;text-transform:none!important;color:#332b23!important}
 .language-option input{width:auto!important;margin:0!important;accent-color:#7c1f22}
 .language-option:has(input:checked){border-color:#9b7837;background:#f5ead0}
+
+
+/* =========================================================
+   FINAL PHOTO FRAME CONTAINMENT FIX — 22 AUG 2026
+   Purpose:
+   - Keep every event photograph completely inside its frame.
+   - Never allow an image to overflow its border/frame.
+   - Preserve the complete supplied artwork (no cropping/stretching).
+   - Use a consistent responsive frame on desktop and mobile.
+   ========================================================= */
+
+/* Event / ceremony photo frames */
+.events .event-photo{
+  position:relative !important;
+  width:100% !important;
+  height:auto !important;
+  min-height:0 !important;
+  aspect-ratio:3 / 2 !important;
+  overflow:hidden !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  box-sizing:border-box !important;
+  padding:0 !important;
+  background:#f7f0e1 !important;
+  border:1px solid rgba(184,154,90,.35) !important;
+  border-radius:4px !important;
+}
+
+.events .event-photo img{
+  display:block !important;
+  width:100% !important;
+  height:100% !important;
+  max-width:100% !important;
+  max-height:100% !important;
+  min-width:0 !important;
+  min-height:0 !important;
+  flex:0 0 100% !important;
+  object-fit:contain !important;
+  object-position:center center !important;
+  overflow:hidden !important;
+}
+
+/* Ensure no legacy event-image rule can reintroduce overflow. */
+.events .event-photo,
+.events .event-photo img{
+  box-sizing:border-box !important;
+}
+
+/* Family photographs */
+.family-photo{
+  position:relative !important;
+  overflow:hidden !important;
+  box-sizing:border-box !important;
+}
+.family-photo img{
+  display:block !important;
+  width:100% !important;
+  height:auto !important;
+  max-width:100% !important;
+  object-fit:contain !important;
+  object-position:center !important;
+}
+
+/* Gallery photographs */
+.gallery-image{
+  position:relative !important;
+  overflow:hidden !important;
+  box-sizing:border-box !important;
+}
+.gallery-image img{
+  display:block !important;
+  width:100% !important;
+  height:auto !important;
+  max-width:100% !important;
+  object-fit:contain !important;
+  object-position:center !important;
+}
+
+/* Traditional artwork and any image used in its framed block */
+.traditional-art{
+  position:relative !important;
+  overflow:hidden !important;
+  box-sizing:border-box !important;
+}
+.traditional-art img{
+  display:block !important;
+  max-width:100% !important;
+  width:100% !important;
+  height:auto !important;
+  object-fit:contain !important;
+  object-position:center !important;
+}
+
+/* Prevent venue/portrait background photographs from escaping their blocks. */
+.photo,
+.venue-image{
+  overflow:hidden !important;
+  box-sizing:border-box !important;
+}
+
+/* Mobile: maintain a usable framed proportion while keeping the complete image visible. */
+@media (max-width:800px){
+  .events .event-photo{
+    aspect-ratio:3 / 2 !important;
+    height:auto !important;
+    min-height:0 !important;
+  }
+  .events .event-photo img{
+    width:100% !important;
+    height:100% !important;
+    object-fit:contain !important;
+  }
+}
