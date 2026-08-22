@@ -26,3 +26,15 @@ WEDDING_WHATSAPP
 ## V2 Traditional Enhancements
 
 The sacred wedding programme now includes 11 traditional Tamil Iyer elements: Kasi Yathra, Oonjal, Malai Maatral, Kanyadanam, Mangalya Dharanam, Sapthapadi, Ammi Midhithal, Metti Dharanam, Arundhati Darshan, Asirvadam and Traditional Tamil Iyer Bhojanam. Individual ritual timings are intentionally not displayed; the Muhurtham is presented as 8:00 AM – 9:30 AM.
+
+
+## FINAL EVENT IMAGE UPDATE — 22 August 2026
+
+The event artwork in `assets/` has been replaced with the final supplied artwork for:
+Kasi Yathra, Oonjal, Malai Maatral, Kanyadanam, Mangalya Dharanam, Sapthapadi,
+Ammi Midhithal, Metti Dharanam, Arundhati Darshan, Asirvadam,
+Traditional Tamil Iyer Bhojanam and Nelangu.
+
+Embedded event-title labels have been removed from the supplied artwork where present.
+The website displays the complete event artwork within its frame without cropping.
+The Sacred Wedding Programme now includes Nelangu as item 12.
