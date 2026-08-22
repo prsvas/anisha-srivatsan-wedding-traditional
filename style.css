@@ -699,6 +699,33 @@ header .logo span{
   }
 }
 
+/* EVENT IMAGE FIX — preserve complete artwork, native aspect ratio and sharpness.
+   No fixed-height crop and no forced stretching. */
+.events .event{min-height:0 !important;align-items:start !important;}
+.events .event-photo{
+  height:auto !important;
+  min-height:0 !important;
+  overflow:visible !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  background:var(--ivory) !important;
+}
+.events .event-photo img{
+  display:block !important;
+  width:100% !important;
+  height:auto !important;
+  max-width:100% !important;
+  max-height:none !important;
+  object-fit:contain !important;
+  object-position:center !important;
+  image-rendering:auto !important;
+}
+@media(max-width:800px){
+  .events .event-photo{height:auto !important;min-height:0 !important;}
+  .events .event-photo img{width:100% !important;height:auto !important;}
+}
+
 /* FINAL POLISH — Sanskrit, high-resolution event art, calendar and invitation preparation */
 .sanskrit-shloka{margin:20px auto 10px;max-width:720px;text-align:center;color:#6d4b20;font-family:"Noto Serif Devanagari","Nirmala UI",serif;font-size:clamp(18px,2.2vw,25px);line-height:1.8;letter-spacing:.02em}
 .shloka-meaning{max-width:680px;margin:0 auto 14px!important;text-align:center;font-style:italic;color:#75684e!important}

@@ -123,12 +123,13 @@ document.addEventListener("DOMContentLoaded",()=>{
       const page=pdf.getPages()[0];
       const font=await pdf.embedFont(PDFLib.StandardFonts.Helvetica);
       const pageWidth=page.getWidth();
-      const fontSize=18;
-      // The supplied PDF is A4 portrait. The first-page "Smt. & Sri" writing line
-      // starts at approximately x=198pt and has ample space to the right.
+      const fontSize=20;
+      // Page 1 is prepared to A4 with the artwork filling the page.
+      // The recipient name sits clearly ABOVE the first blue writing line,
+      // rather than on the line itself.
       let size=fontSize;
-      while(font.widthOfTextAtSize(name,size)>250 && size>12){size-=0.5;}
-      page.drawText(name,{x:198,y:428,size,color:PDFLib.rgb(0.20,0.28,0.55),font});
+      while(font.widthOfTextAtSize(name,size)>270 && size>15){size-=0.5;}
+      page.drawText(name,{x:195,y:405,size,color:PDFLib.rgb(0.20,0.28,0.55),font});
 
       const out=await pdf.save({useObjectStreams:false});
       const blob=new Blob([out],{type:"application/pdf"});
