@@ -29,6 +29,52 @@
 body.modal-open{overflow:hidden}
 </style>
 <meta name="wedding-invitation-version" content="version2-print-pdf-language-selection-20260822">
+
+<style id="final-event-photo-frame-v2">
+/* FINAL EVENT PHOTO FRAME — V2 HARD OVERRIDE
+   Every supplied event image stays completely inside a 3:2 frame.
+   No cover-cropping; no head/hair/subject can be clipped by CSS. */
+.events .event-photo{
+  width:100% !important;
+  height:auto !important;
+  min-height:0 !important;
+  max-height:none !important;
+  aspect-ratio:3 / 2 !important;
+  box-sizing:border-box !important;
+  overflow:hidden !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  background:#f7f0e1 !important;
+  background-image:none !important;
+}
+.events .event-photo img{
+  display:block !important;
+  width:auto !important;
+  height:auto !important;
+  max-width:100% !important;
+  max-height:100% !important;
+  object-fit:contain !important;
+  object-position:center !important;
+  flex:0 0 auto !important;
+}
+@media(max-width:800px){
+  .events .event-photo{
+    width:100% !important;
+    height:auto !important;
+    min-height:0 !important;
+    max-height:none !important;
+    aspect-ratio:3 / 2 !important;
+  }
+  .events .event-photo img{
+    width:auto !important;
+    height:auto !important;
+    max-width:100% !important;
+    max-height:100% !important;
+    object-fit:contain !important;
+  }
+}
+</style>
 </head>
 <body>
 <header id="siteNav"><a class="logo" href="#home" aria-label="Anisha & Srivatsan"><span>AS</span></a><nav id="menu">

@@ -800,30 +800,23 @@ header .logo span{
 .language-option input{width:auto!important;margin:0!important;accent-color:#7c1f22}
 .language-option:has(input:checked){border-color:#9b7837;background:#f5ead0}
 
-/* =========================================================
-   FINAL EVENT PHOTO FRAME FIX — DESKTOP + MOBILE
-   The complete supplied event photograph must remain INSIDE
-   the frame. Never crop the bride/groom/head/hair.
-   ========================================================= */
-
+/* FINAL EVENT PHOTO FRAME — V2 HARD OVERRIDE
+   Every supplied event image stays completely inside a 3:2 frame.
+   No cover-cropping; no head/hair/subject can be clipped by CSS. */
 .events .event-photo{
-  position:relative !important;
   width:100% !important;
-  height:360px !important;
-  min-height:360px !important;
-  max-height:360px !important;
-  padding:0 !important;
-  margin:0 !important;
+  height:auto !important;
+  min-height:0 !important;
+  max-height:none !important;
+  aspect-ratio:3 / 2 !important;
+  box-sizing:border-box !important;
+  overflow:hidden !important;
   display:flex !important;
   align-items:center !important;
   justify-content:center !important;
-  overflow:hidden !important;
-  box-sizing:border-box !important;
   background:#f7f0e1 !important;
   background-image:none !important;
-  border:1px solid rgba(184,154,90,.28) !important;
 }
-
 .events .event-photo img{
   display:block !important;
   width:auto !important;
@@ -831,52 +824,22 @@ header .logo span{
   max-width:100% !important;
   max-height:100% !important;
   object-fit:contain !important;
-  object-position:center center !important;
+  object-position:center !important;
   flex:0 0 auto !important;
-  margin:0 auto !important;
 }
-
-/* Prevent any event-specific rule from reintroducing a cropped
-   background photograph. */
-.events .event-photo,
-.events .event-photo.sapthapadi,
-.events .event-photo.ammi,
-.events .event-photo.metti,
-.events .event-photo.arundhati,
-.events .event-photo.asirvadam,
-.events .event-photo.bhojanam,
-.events .event-photo.nelangu,
-.events .feast-event .event-photo{
-  background-image:none !important;
-  background-size:contain !important;
-  background-repeat:no-repeat !important;
-  background-position:center !important;
-}
-
 @media(max-width:800px){
   .events .event-photo{
     width:100% !important;
-    height:300px !important;
-    min-height:300px !important;
-    max-height:300px !important;
-    overflow:hidden !important;
-    padding:0 !important;
+    height:auto !important;
+    min-height:0 !important;
+    max-height:none !important;
+    aspect-ratio:3 / 2 !important;
   }
-
   .events .event-photo img{
     width:auto !important;
     height:auto !important;
     max-width:100% !important;
     max-height:100% !important;
     object-fit:contain !important;
-    object-position:center center !important;
-  }
-}
-
-@media(max-width:480px){
-  .events .event-photo{
-    height:270px !important;
-    min-height:270px !important;
-    max-height:270px !important;
   }
 }
