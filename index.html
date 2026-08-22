@@ -29,16 +29,24 @@
 body.modal-open{overflow:hidden}
 </style>
 <meta name="wedding-invitation-version" content="version2-print-pdf-language-selection-20260822">
-<style id="final-zero-crop-event-photo-fix">
+<style id="final-event-photo-zero-crop">
+
 
 /* ================================================================
-   FINAL — ZERO-CROP EVENT PHOTOGRAPHS
-   The event frame follows the COMPLETE image. No fixed height,
-   no aspect-ratio, no max-height and no cover crop.
+   FINAL EVENT PHOTO RENDERING — COMPLETE IMAGE, ZERO CSS CROP
+   The frame follows the natural height of the supplied photograph.
+   No fixed height, aspect-ratio, cover, or max-height is permitted.
    ================================================================ */
 
+.events .event{
+  align-items:start !important;
+  min-height:0 !important;
+}
+
 .events .event-photo,
-.events .event.reverse .event-photo{
+.events .event.reverse .event-photo,
+.events .feast-event .event-photo,
+.events .nelangu-event .event-photo{
   width:100% !important;
   height:auto !important;
   min-height:0 !important;
@@ -49,16 +57,19 @@ body.modal-open{overflow:hidden}
   display:block !important;
   overflow:visible !important;
   box-sizing:border-box !important;
-  background:var(--ivory) !important;
+  background-color:var(--ivory) !important;
   background-image:none !important;
   background-size:auto !important;
   background-position:center !important;
   background-repeat:no-repeat !important;
   border:1px solid rgba(184,154,90,.30) !important;
+  border-radius:2px !important;
 }
 
 .events .event-photo img,
-.events .event.reverse .event-photo img{
+.events .event.reverse .event-photo img,
+.events .feast-event .event-photo img,
+.events .nelangu-event .event-photo img{
   display:block !important;
   width:100% !important;
   height:auto !important;
@@ -66,15 +77,16 @@ body.modal-open{overflow:hidden}
   min-height:0 !important;
   max-width:100% !important;
   max-height:none !important;
-  object-fit:initial !important;
-  object-position:initial !important;
   margin:0 !important;
   padding:0 !important;
+  object-fit:initial !important;
+  object-position:initial !important;
   transform:none !important;
-  box-sizing:border-box !important;
+  flex:none !important;
+  image-rendering:auto !important;
 }
 
-/* Absolutely no background-photo crop is allowed on event cards. */
+/* Explicitly neutralise every legacy event background image. */
 .events .event-photo.kasi,
 .events .event-photo.oonjal,
 .events .event-photo.malai,
@@ -86,14 +98,20 @@ body.modal-open{overflow:hidden}
 .events .event-photo.arundhati,
 .events .event-photo.asirvadam,
 .events .event-photo.bhojanam,
-.events .event-photo.nelangu,
-.events .feast-event .event-photo{
+.events .event-photo.nelangu{
   background-image:none !important;
   background-size:auto !important;
 }
 
-/* Mobile: same rule — the image determines the frame height. */
+/* Mobile: the exact same natural-image rule is retained.
+   Nothing is resized to a fixed-height mobile box. */
 @media(max-width:800px){
+  .events .event,
+  .events .event.reverse{
+    align-items:start !important;
+    min-height:0 !important;
+  }
+
   .events .event-photo,
   .events .event.reverse .event-photo{
     width:100% !important;
@@ -102,6 +120,7 @@ body.modal-open{overflow:hidden}
     max-height:none !important;
     aspect-ratio:auto !important;
     overflow:visible !important;
+    padding:0 !important;
   }
 
   .events .event-photo img,
@@ -111,6 +130,16 @@ body.modal-open{overflow:hidden}
     max-width:100% !important;
     max-height:none !important;
     object-fit:initial !important;
+  }
+}
+
+@media(max-width:480px){
+  .events .event-photo,
+  .events .event.reverse .event-photo{
+    width:100% !important;
+    height:auto !important;
+    min-height:0 !important;
+    aspect-ratio:auto !important;
   }
 }
 
