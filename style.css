@@ -730,7 +730,42 @@ header .logo span{
 .sanskrit-shloka{margin:20px auto 10px;max-width:720px;text-align:center;color:#6d4b20;font-family:"Noto Serif Devanagari","Nirmala UI",serif;font-size:clamp(18px,2.2vw,25px);line-height:1.8;letter-spacing:.02em}
 .shloka-meaning{max-width:680px;margin:0 auto 14px!important;text-align:center;font-style:italic;color:#75684e!important}
 .event-photo{background:#f7f0e1!important}
-.event-photo img{width:100%!important;height:100%!important;max-width:none!important;max-height:none!important;object-fit:contain!important;object-position:center!important;image-rendering:auto!important}
+/* MOBILE EVENT FRAME FIX — never crop or force event artwork to the frame height.
+   The complete supplied image is always displayed at its natural aspect ratio. */
+.event-photo{
+  height:auto!important;
+  min-height:0!important;
+  overflow:visible!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  box-sizing:border-box!important;
+}
+.event-photo img{
+  display:block!important;
+  width:100%!important;
+  height:auto!important;
+  max-width:100%!important;
+  max-height:none!important;
+  object-fit:contain!important;
+  object-position:center!important;
+  image-rendering:auto!important;
+}
+@media(max-width:800px){
+  .events .event-photo{
+    width:100%!important;
+    height:auto!important;
+    min-height:0!important;
+    overflow:visible!important;
+  }
+  .events .event-photo img{
+    width:100%!important;
+    height:auto!important;
+    max-width:100%!important;
+    max-height:none!important;
+    object-fit:contain!important;
+  }
+}
 
 .calendar-actions{margin-top:12px}.calendar-button{background:transparent!important;color:#f7edd9!important;border-color:rgba(255,255,255,.65)!important}
 .calendar-menu{position:fixed;inset:0;background:rgba(20,18,14,.62);display:none;align-items:center;justify-content:center;z-index:1000;padding:20px}
