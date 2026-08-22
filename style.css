@@ -801,47 +801,50 @@ header .logo span{
 .language-option:has(input:checked){border-color:#9b7837;background:#f5ead0}
 
 
-/* ============================================================
-   DEFINITIVE EVENT PHOTO FIX
-   IMPORTANT: Event photographs are REAL <img> elements.
-   The complete source image must remain visible inside the card.
-   ============================================================ */
+/* ================================================================
+   FINAL — ZERO-CROP EVENT PHOTOGRAPHS
+   The event frame follows the COMPLETE image. No fixed height,
+   no aspect-ratio, no max-height and no cover crop.
+   ================================================================ */
 
-.events .event-photo{
-  position:relative !important;
+.events .event-photo,
+.events .event.reverse .event-photo{
   width:100% !important;
   height:auto !important;
   min-height:0 !important;
-  aspect-ratio:4 / 3 !important;
-  padding:10px !important;
+  max-height:none !important;
+  aspect-ratio:auto !important;
+  padding:0 !important;
   margin:0 !important;
+  display:block !important;
+  overflow:visible !important;
   box-sizing:border-box !important;
-  display:flex !important;
-  align-items:center !important;
-  justify-content:center !important;
-  overflow:hidden !important;
   background:var(--ivory) !important;
   background-image:none !important;
+  background-size:auto !important;
+  background-position:center !important;
+  background-repeat:no-repeat !important;
   border:1px solid rgba(184,154,90,.30) !important;
 }
 
-.events .event-photo img{
-  position:relative !important;
+.events .event-photo img,
+.events .event.reverse .event-photo img{
   display:block !important;
-  width:auto !important;
+  width:100% !important;
   height:auto !important;
-  max-width:100% !important;
-  max-height:100% !important;
   min-width:0 !important;
   min-height:0 !important;
-  object-fit:contain !important;
-  object-position:center center !important;
-  flex:0 0 auto !important;
-  margin:0 auto !important;
+  max-width:100% !important;
+  max-height:none !important;
+  object-fit:initial !important;
+  object-position:initial !important;
+  margin:0 !important;
+  padding:0 !important;
+  transform:none !important;
+  box-sizing:border-box !important;
 }
 
-/* Remove all event background photographs; the img above is the
-   sole source of the displayed event artwork. */
+/* Absolutely no background-photo crop is allowed on event cards. */
 .events .event-photo.kasi,
 .events .event-photo.oonjal,
 .events .event-photo.malai,
@@ -853,39 +856,30 @@ header .logo span{
 .events .event-photo.arundhati,
 .events .event-photo.asirvadam,
 .events .event-photo.bhojanam,
-.events .event-photo.nelangu{
+.events .event-photo.nelangu,
+.events .feast-event .event-photo{
   background-image:none !important;
-  background-size:initial !important;
-  background-position:center !important;
-  background-repeat:no-repeat !important;
+  background-size:auto !important;
 }
 
+/* Mobile: same rule — the image determines the frame height. */
 @media(max-width:800px){
   .events .event-photo,
-  .event.reverse .event-photo{
+  .events .event.reverse .event-photo{
     width:100% !important;
     height:auto !important;
     min-height:0 !important;
-    aspect-ratio:4 / 3 !important;
-    padding:8px !important;
-    overflow:hidden !important;
+    max-height:none !important;
+    aspect-ratio:auto !important;
+    overflow:visible !important;
   }
 
   .events .event-photo img,
-  .event.reverse .event-photo img{
-    width:auto !important;
+  .events .event.reverse .event-photo img{
+    width:100% !important;
     height:auto !important;
     max-width:100% !important;
-    max-height:100% !important;
-    object-fit:contain !important;
-    object-position:center center !important;
-  }
-}
-
-@media(max-width:480px){
-  .events .event-photo,
-  .event.reverse .event-photo{
-    aspect-ratio:4 / 3 !important;
-    padding:6px !important;
+    max-height:none !important;
+    object-fit:initial !important;
   }
 }

@@ -29,6 +29,92 @@
 body.modal-open{overflow:hidden}
 </style>
 <meta name="wedding-invitation-version" content="version2-print-pdf-language-selection-20260822">
+<style id="final-zero-crop-event-photo-fix">
+
+/* ================================================================
+   FINAL — ZERO-CROP EVENT PHOTOGRAPHS
+   The event frame follows the COMPLETE image. No fixed height,
+   no aspect-ratio, no max-height and no cover crop.
+   ================================================================ */
+
+.events .event-photo,
+.events .event.reverse .event-photo{
+  width:100% !important;
+  height:auto !important;
+  min-height:0 !important;
+  max-height:none !important;
+  aspect-ratio:auto !important;
+  padding:0 !important;
+  margin:0 !important;
+  display:block !important;
+  overflow:visible !important;
+  box-sizing:border-box !important;
+  background:var(--ivory) !important;
+  background-image:none !important;
+  background-size:auto !important;
+  background-position:center !important;
+  background-repeat:no-repeat !important;
+  border:1px solid rgba(184,154,90,.30) !important;
+}
+
+.events .event-photo img,
+.events .event.reverse .event-photo img{
+  display:block !important;
+  width:100% !important;
+  height:auto !important;
+  min-width:0 !important;
+  min-height:0 !important;
+  max-width:100% !important;
+  max-height:none !important;
+  object-fit:initial !important;
+  object-position:initial !important;
+  margin:0 !important;
+  padding:0 !important;
+  transform:none !important;
+  box-sizing:border-box !important;
+}
+
+/* Absolutely no background-photo crop is allowed on event cards. */
+.events .event-photo.kasi,
+.events .event-photo.oonjal,
+.events .event-photo.malai,
+.events .event-photo.kanya,
+.events .event-photo.mangalya,
+.events .event-photo.sapthapadi,
+.events .event-photo.ammi,
+.events .event-photo.metti,
+.events .event-photo.arundhati,
+.events .event-photo.asirvadam,
+.events .event-photo.bhojanam,
+.events .event-photo.nelangu,
+.events .feast-event .event-photo{
+  background-image:none !important;
+  background-size:auto !important;
+}
+
+/* Mobile: same rule — the image determines the frame height. */
+@media(max-width:800px){
+  .events .event-photo,
+  .events .event.reverse .event-photo{
+    width:100% !important;
+    height:auto !important;
+    min-height:0 !important;
+    max-height:none !important;
+    aspect-ratio:auto !important;
+    overflow:visible !important;
+  }
+
+  .events .event-photo img,
+  .events .event.reverse .event-photo img{
+    width:100% !important;
+    height:auto !important;
+    max-width:100% !important;
+    max-height:none !important;
+    object-fit:initial !important;
+  }
+}
+
+</style>
 </head>
 <body>
 <header id="siteNav"><a class="logo" href="#home" aria-label="Anisha & Srivatsan"><span>AS</span></a><nav id="menu">
