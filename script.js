@@ -129,7 +129,7 @@ document.addEventListener("DOMContentLoaded",()=>{
       // rather than on the line itself.
       let size=fontSize;
       while(font.widthOfTextAtSize(name,size)>270 && size>15){size-=0.5;}
-      page.drawText(name,{x:195,y:430,size,color:PDFLib.rgb(0.20,0.28,0.55),font});
+      page.drawText(name,{x:195,y:405,size,color:PDFLib.rgb(0.20,0.28,0.55),font});
 
       const out=await pdf.save({useObjectStreams:false});
       const blob=new Blob([out],{type:"application/pdf"});

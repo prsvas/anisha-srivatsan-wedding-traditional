@@ -29,121 +29,6 @@
 body.modal-open{overflow:hidden}
 </style>
 <meta name="wedding-invitation-version" content="version2-print-pdf-language-selection-20260822">
-<style id="final-event-photo-zero-crop">
-
-
-/* ================================================================
-   FINAL EVENT PHOTO RENDERING — COMPLETE IMAGE, ZERO CSS CROP
-   The frame follows the natural height of the supplied photograph.
-   No fixed height, aspect-ratio, cover, or max-height is permitted.
-   ================================================================ */
-
-.events .event{
-  align-items:start !important;
-  min-height:0 !important;
-}
-
-.events .event-photo,
-.events .event.reverse .event-photo,
-.events .feast-event .event-photo,
-.events .nelangu-event .event-photo{
-  width:100% !important;
-  height:auto !important;
-  min-height:0 !important;
-  max-height:none !important;
-  aspect-ratio:auto !important;
-  padding:0 !important;
-  margin:0 !important;
-  display:block !important;
-  overflow:visible !important;
-  box-sizing:border-box !important;
-  background-color:var(--ivory) !important;
-  background-image:none !important;
-  background-size:auto !important;
-  background-position:center !important;
-  background-repeat:no-repeat !important;
-  border:1px solid rgba(184,154,90,.30) !important;
-  border-radius:2px !important;
-}
-
-.events .event-photo img,
-.events .event.reverse .event-photo img,
-.events .feast-event .event-photo img,
-.events .nelangu-event .event-photo img{
-  display:block !important;
-  width:100% !important;
-  height:auto !important;
-  min-width:0 !important;
-  min-height:0 !important;
-  max-width:100% !important;
-  max-height:none !important;
-  margin:0 !important;
-  padding:0 !important;
-  object-fit:initial !important;
-  object-position:initial !important;
-  transform:none !important;
-  flex:none !important;
-  image-rendering:auto !important;
-}
-
-/* Explicitly neutralise every legacy event background image. */
-.events .event-photo.kasi,
-.events .event-photo.oonjal,
-.events .event-photo.malai,
-.events .event-photo.kanya,
-.events .event-photo.mangalya,
-.events .event-photo.sapthapadi,
-.events .event-photo.ammi,
-.events .event-photo.metti,
-.events .event-photo.arundhati,
-.events .event-photo.asirvadam,
-.events .event-photo.bhojanam,
-.events .event-photo.nelangu{
-  background-image:none !important;
-  background-size:auto !important;
-}
-
-/* Mobile: the exact same natural-image rule is retained.
-   Nothing is resized to a fixed-height mobile box. */
-@media(max-width:800px){
-  .events .event,
-  .events .event.reverse{
-    align-items:start !important;
-    min-height:0 !important;
-  }
-
-  .events .event-photo,
-  .events .event.reverse .event-photo{
-    width:100% !important;
-    height:auto !important;
-    min-height:0 !important;
-    max-height:none !important;
-    aspect-ratio:auto !important;
-    overflow:visible !important;
-    padding:0 !important;
-  }
-
-  .events .event-photo img,
-  .events .event.reverse .event-photo img{
-    width:100% !important;
-    height:auto !important;
-    max-width:100% !important;
-    max-height:none !important;
-    object-fit:initial !important;
-  }
-}
-
-@media(max-width:480px){
-  .events .event-photo,
-  .events .event.reverse .event-photo{
-    width:100% !important;
-    height:auto !important;
-    min-height:0 !important;
-    aspect-ratio:auto !important;
-  }
-}
-
-</style>
 </head>
 <body>
 <header id="siteNav"><a class="logo" href="#home" aria-label="Anisha & Srivatsan"><span>AS</span></a><nav id="menu">
@@ -209,18 +94,18 @@ body.modal-open{overflow:hidden}
 
 <section class="section" id="celebrations"><div class="intro reveal"><div class="eyebrow">SACRED TRADITIONS</div><h2>The wedding unfolds in blessings</h2><p>From the first symbolic journey to the final feast, each ritual carries a prayer, a meaning and a beautiful place in the life of the couple.</p></div>
 <div class="events">
-<article class="event reveal"><div class="event-photo kasi"><img src="assets/hq-kasi-yathra.jpg" alt="" loading="lazy" decoding="async"></div><div class="event-number">01</div><div><div class="eyebrow">SACRED RITUAL</div><h3>Kasi Yathra</h3><div class="place">A symbolic beginning</div><p>The groom sets off on a symbolic pilgrimage, until the bride's father lovingly invites him back toward family life and marriage.</p></div></article>
-<article class="event reverse reveal"><div class="event-photo oonjal"><img src="assets/hq-oonjal.jpg" alt="" loading="lazy" decoding="async"></div><div class="event-number">02</div><div><div class="eyebrow">FAMILY TRADITION</div><h3>Oonjal</h3><div class="place">A joyful family ceremony</div><p>The gentle swing celebrates balance, companionship and the promise of standing together through every season of life.</p></div></article>
-<article class="event reveal"><div class="event-photo malai"><img src="assets/hq-malai-maatral.jpg" alt="" loading="lazy" decoding="async"></div><div class="event-number">03</div><div><div class="eyebrow">JOYFUL UNION</div><h3>Malai Maatral</h3><div class="place">Exchange of garlands</div><p>The bride and groom exchange garlands in a joyful expression of mutual acceptance, witnessed by their families and loved ones.</p></div></article>
-<article class="event reverse reveal"><div class="event-photo kanya"><img src="assets/hq-kanyadanam.jpg" alt="" loading="lazy" decoding="async"></div><div class="event-number">04</div><div><div class="eyebrow">SACRED PROMISE</div><h3>Kanyadanam</h3><div class="place">The giving of the bride</div><p>The bride's family entrusts her hand to the groom before the sacred fire, joining two families in love, duty and blessing.</p></div></article>
-<article class="event reveal"><div class="event-photo mangalya"><img src="assets/hq-mangalya-dharanam.jpg" alt="" loading="lazy" decoding="async"></div><div class="event-number">05</div><div><div class="eyebrow">THE CENTRAL MOMENT</div><h3>Mangalya Dharanam</h3><div class="place">The tying of the sacred mangalyam</div><p>The sacred mangalyam is tied with prayers for a long, harmonious and joyful married life.</p></div></article>
-<article class="event reverse reveal"><div class="event-photo sapthapadi"><img src="assets/hq-sapthapadi.jpg" alt="" loading="lazy" decoding="async"></div><div class="event-number">06</div><div><div class="eyebrow">SEVEN SACRED STEPS</div><h3>Sapthapadi</h3><div class="place">Walking together in seven steps</div><p>With seven sacred steps, the couple invokes blessings for nourishment, strength, prosperity, happiness, family, longevity and lifelong companionship.</p></div></article>
-<article class="event reveal"><div class="event-photo ammi"><img src="assets/hq-ammi-midhithal.jpg" alt="" loading="lazy" decoding="async"></div><div class="event-number">07</div><div><div class="eyebrow">STEADFASTNESS</div><h3>Ammi Midhithal</h3><div class="place">The sacred grinding stone</div><p>The bride places her foot upon the ammi, symbolising firmness, resilience and the strength to meet life's journey together.</p></div></article>
-<article class="event reverse reveal"><div class="event-photo metti"><img src="assets/hq-metti-dharanam.jpg" alt="" loading="lazy" decoding="async"></div><div class="event-number">08</div><div><div class="eyebrow">TRADITIONAL SYMBOL</div><h3>Metti Dharanam</h3><div class="place">The silver toe-ring ceremony</div><p>The traditional metti is placed as a cherished symbol associated with the bride's new journey in married life.</p></div></article>
-<article class="event reveal"><div class="event-photo arundhati"><img src="assets/hq-arundhati-darshan.jpg" alt="" loading="lazy" decoding="async"></div><div class="event-number">09</div><div><div class="eyebrow">AUSPICIOUS BLESSING</div><h3>Arundhati Darshan</h3><div class="place">Looking to the stars</div><p>The newly married couple is guided to behold Arundhati and Vasistha, invoking the ideal of devotion, constancy and companionship.</p></div></article>
-<article class="event reverse reveal"><div class="event-photo asirvadam"><img src="assets/hq-asirvadam.jpg" alt="" loading="lazy" decoding="async"></div><div class="event-number">10</div><div><div class="eyebrow">BLESSINGS OF THE ELDERS</div><h3>Asirvadam</h3><div class="place">With the blessings of family</div><p>The couple receives the blessings of elders and loved ones as they step forward into their new life together.</p></div></article>
-<article class="event reveal feast-event"><div class="event-photo bhojanam"><img src="assets/hq-tamil-iyer-bhojanam.jpg" alt="" loading="lazy" decoding="async"></div><div class="event-number">11</div><div><div class="eyebrow">A TRADITIONAL CELEBRATION</div><h3>Traditional Tamil Iyer Bhojanam</h3><div class="place">A festive banana-leaf feast</div><p>The sacred celebrations conclude with a traditional Tamil Iyer feast — lovingly served on the banana leaf and shared with family and friends.</p></div></article>
-<article class="event reverse reveal nelangu-event"><div class="event-photo nelangu"><img src="assets/hq-nelangu.jpg" alt="" loading="lazy" decoding="async"></div><div class="event-number">12</div><div><div class="eyebrow">A PLAYFUL TRADITION</div><h3>Nelangu</h3><div class="place">A joyful family ritual</div><p>A light-hearted traditional gathering where the newly married couple share playful moments with family, laughter and blessings as the celebrations continue.</p></div></article>
+<article class="event reveal"><div class="event-photo kasi" style="height:auto !important;min-height:0 !important;max-height:none !important;aspect-ratio:auto !important;overflow:visible !important;background-image:none !important;padding:0 !important;display:block !important;"><img src="assets/safe-hq-kasi-yathra.jpg" alt="" loading="lazy" decoding="async" style="display:block !important;width:100% !important;height:auto !important;max-width:100% !important;max-height:none !important;object-fit:initial !important;object-position:initial !important;margin:0 !important;padding:0 !important;"></div><div class="event-number">01</div><div><div class="eyebrow">SACRED RITUAL</div><h3>Kasi Yathra</h3><div class="place">A symbolic beginning</div><p>The groom sets off on a symbolic pilgrimage, until the bride's father lovingly invites him back toward family life and marriage.</p></div></article>
+<article class="event reverse reveal"><div class="event-photo oonjal" style="height:auto !important;min-height:0 !important;max-height:none !important;aspect-ratio:auto !important;overflow:visible !important;background-image:none !important;padding:0 !important;display:block !important;"><img src="assets/safe-hq-oonjal.jpg" alt="" loading="lazy" decoding="async" style="display:block !important;width:100% !important;height:auto !important;max-width:100% !important;max-height:none !important;object-fit:initial !important;object-position:initial !important;margin:0 !important;padding:0 !important;"></div><div class="event-number">02</div><div><div class="eyebrow">FAMILY TRADITION</div><h3>Oonjal</h3><div class="place">A joyful family ceremony</div><p>The gentle swing celebrates balance, companionship and the promise of standing together through every season of life.</p></div></article>
+<article class="event reveal"><div class="event-photo malai" style="height:auto !important;min-height:0 !important;max-height:none !important;aspect-ratio:auto !important;overflow:visible !important;background-image:none !important;padding:0 !important;display:block !important;"><img src="assets/safe-hq-malai-maatral.jpg" alt="" loading="lazy" decoding="async" style="display:block !important;width:100% !important;height:auto !important;max-width:100% !important;max-height:none !important;object-fit:initial !important;object-position:initial !important;margin:0 !important;padding:0 !important;"></div><div class="event-number">03</div><div><div class="eyebrow">JOYFUL UNION</div><h3>Malai Maatral</h3><div class="place">Exchange of garlands</div><p>The bride and groom exchange garlands in a joyful expression of mutual acceptance, witnessed by their families and loved ones.</p></div></article>
+<article class="event reverse reveal"><div class="event-photo kanya" style="height:auto !important;min-height:0 !important;max-height:none !important;aspect-ratio:auto !important;overflow:visible !important;background-image:none !important;padding:0 !important;display:block !important;"><img src="assets/safe-hq-kanyadanam.jpg" alt="" loading="lazy" decoding="async" style="display:block !important;width:100% !important;height:auto !important;max-width:100% !important;max-height:none !important;object-fit:initial !important;object-position:initial !important;margin:0 !important;padding:0 !important;"></div><div class="event-number">04</div><div><div class="eyebrow">SACRED PROMISE</div><h3>Kanyadanam</h3><div class="place">The giving of the bride</div><p>The bride's family entrusts her hand to the groom before the sacred fire, joining two families in love, duty and blessing.</p></div></article>
+<article class="event reveal"><div class="event-photo mangalya" style="height:auto !important;min-height:0 !important;max-height:none !important;aspect-ratio:auto !important;overflow:visible !important;background-image:none !important;padding:0 !important;display:block !important;"><img src="assets/safe-hq-mangalya-dharanam.jpg" alt="" loading="lazy" decoding="async" style="display:block !important;width:100% !important;height:auto !important;max-width:100% !important;max-height:none !important;object-fit:initial !important;object-position:initial !important;margin:0 !important;padding:0 !important;"></div><div class="event-number">05</div><div><div class="eyebrow">THE CENTRAL MOMENT</div><h3>Mangalya Dharanam</h3><div class="place">The tying of the sacred mangalyam</div><p>The sacred mangalyam is tied with prayers for a long, harmonious and joyful married life.</p></div></article>
+<article class="event reverse reveal"><div class="event-photo sapthapadi" style="height:auto !important;min-height:0 !important;max-height:none !important;aspect-ratio:auto !important;overflow:visible !important;background-image:none !important;padding:0 !important;display:block !important;"><img src="assets/safe-hq-sapthapadi.jpg" alt="" loading="lazy" decoding="async" style="display:block !important;width:100% !important;height:auto !important;max-width:100% !important;max-height:none !important;object-fit:initial !important;object-position:initial !important;margin:0 !important;padding:0 !important;"></div><div class="event-number">06</div><div><div class="eyebrow">SEVEN SACRED STEPS</div><h3>Sapthapadi</h3><div class="place">Walking together in seven steps</div><p>With seven sacred steps, the couple invokes blessings for nourishment, strength, prosperity, happiness, family, longevity and lifelong companionship.</p></div></article>
+<article class="event reveal"><div class="event-photo ammi" style="height:auto !important;min-height:0 !important;max-height:none !important;aspect-ratio:auto !important;overflow:visible !important;background-image:none !important;padding:0 !important;display:block !important;"><img src="assets/safe-hq-ammi-midhithal.jpg" alt="" loading="lazy" decoding="async" style="display:block !important;width:100% !important;height:auto !important;max-width:100% !important;max-height:none !important;object-fit:initial !important;object-position:initial !important;margin:0 !important;padding:0 !important;"></div><div class="event-number">07</div><div><div class="eyebrow">STEADFASTNESS</div><h3>Ammi Midhithal</h3><div class="place">The sacred grinding stone</div><p>The bride places her foot upon the ammi, symbolising firmness, resilience and the strength to meet life's journey together.</p></div></article>
+<article class="event reverse reveal"><div class="event-photo metti" style="height:auto !important;min-height:0 !important;max-height:none !important;aspect-ratio:auto !important;overflow:visible !important;background-image:none !important;padding:0 !important;display:block !important;"><img src="assets/safe-hq-metti-dharanam.jpg" alt="" loading="lazy" decoding="async" style="display:block !important;width:100% !important;height:auto !important;max-width:100% !important;max-height:none !important;object-fit:initial !important;object-position:initial !important;margin:0 !important;padding:0 !important;"></div><div class="event-number">08</div><div><div class="eyebrow">TRADITIONAL SYMBOL</div><h3>Metti Dharanam</h3><div class="place">The silver toe-ring ceremony</div><p>The traditional metti is placed as a cherished symbol associated with the bride's new journey in married life.</p></div></article>
+<article class="event reveal"><div class="event-photo arundhati" style="height:auto !important;min-height:0 !important;max-height:none !important;aspect-ratio:auto !important;overflow:visible !important;background-image:none !important;padding:0 !important;display:block !important;"><img src="assets/safe-hq-arundhati-darshan.jpg" alt="" loading="lazy" decoding="async" style="display:block !important;width:100% !important;height:auto !important;max-width:100% !important;max-height:none !important;object-fit:initial !important;object-position:initial !important;margin:0 !important;padding:0 !important;"></div><div class="event-number">09</div><div><div class="eyebrow">AUSPICIOUS BLESSING</div><h3>Arundhati Darshan</h3><div class="place">Looking to the stars</div><p>The newly married couple is guided to behold Arundhati and Vasistha, invoking the ideal of devotion, constancy and companionship.</p></div></article>
+<article class="event reverse reveal"><div class="event-photo asirvadam" style="height:auto !important;min-height:0 !important;max-height:none !important;aspect-ratio:auto !important;overflow:visible !important;background-image:none !important;padding:0 !important;display:block !important;"><img src="assets/safe-hq-asirvadam.jpg" alt="" loading="lazy" decoding="async" style="display:block !important;width:100% !important;height:auto !important;max-width:100% !important;max-height:none !important;object-fit:initial !important;object-position:initial !important;margin:0 !important;padding:0 !important;"></div><div class="event-number">10</div><div><div class="eyebrow">BLESSINGS OF THE ELDERS</div><h3>Asirvadam</h3><div class="place">With the blessings of family</div><p>The couple receives the blessings of elders and loved ones as they step forward into their new life together.</p></div></article>
+<article class="event reveal feast-event"><div class="event-photo bhojanam" style="height:auto !important;min-height:0 !important;max-height:none !important;aspect-ratio:auto !important;overflow:visible !important;background-image:none !important;padding:0 !important;display:block !important;"><img src="assets/safe-hq-tamil-iyer-bhojanam.jpg" alt="" loading="lazy" decoding="async" style="display:block !important;width:100% !important;height:auto !important;max-width:100% !important;max-height:none !important;object-fit:initial !important;object-position:initial !important;margin:0 !important;padding:0 !important;"></div><div class="event-number">11</div><div><div class="eyebrow">A TRADITIONAL CELEBRATION</div><h3>Traditional Tamil Iyer Bhojanam</h3><div class="place">A festive banana-leaf feast</div><p>The sacred celebrations conclude with a traditional Tamil Iyer feast — lovingly served on the banana leaf and shared with family and friends.</p></div></article>
+<article class="event reverse reveal nelangu-event"><div class="event-photo nelangu" style="height:auto !important;min-height:0 !important;max-height:none !important;aspect-ratio:auto !important;overflow:visible !important;background-image:none !important;padding:0 !important;display:block !important;"><img src="assets/safe-hq-nelangu.jpg" alt="" loading="lazy" decoding="async" style="display:block !important;width:100% !important;height:auto !important;max-width:100% !important;max-height:none !important;object-fit:initial !important;object-position:initial !important;margin:0 !important;padding:0 !important;"></div><div class="event-number">12</div><div><div class="eyebrow">A PLAYFUL TRADITION</div><h3>Nelangu</h3><div class="place">A joyful family ritual</div><p>A light-hearted traditional gathering where the newly married couple share playful moments with family, laughter and blessings as the celebrations continue.</p></div></article>
 <a class="slide-down" href="#muhurtham" aria-label="Scroll to the sacred wedding programme"><span class="slide-down-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v14M6 12l6 6 6-6"/></svg></span></a></section>
 
 <section class="section cream" id="families"><div class="intro centered reveal"><div class="eyebrow">WITH BLESSINGS</div><h2>Our families</h2><p>The hands that raised us, and the hearts that bring us together.</p></div>

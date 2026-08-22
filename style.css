@@ -765,62 +765,16 @@ header .logo span{
 .language-option input{width:auto!important;margin:0!important;accent-color:#7c1f22}
 .language-option:has(input:checked){border-color:#9b7837;background:#f5ead0}
 
+/* FINAL HARD OVERRIDE: event photos are natural-height images. */
+.events .event-photo{height:auto !important;min-height:0 !important;max-height:none !important;aspect-ratio:auto !important;overflow:visible !important;background-image:none !important;padding:0 !important;display:block !important;}
+.events .event-photo img{display:block !important;width:100% !important;height:auto !important;max-width:100% !important;max-height:none !important;object-fit:initial !important;object-position:initial !important;margin:0 !important;padding:0 !important;}
+@media(max-width:800px){.events .event-photo,.event.reverse .event-photo{height:auto !important;min-height:0 !important;max-height:none !important;aspect-ratio:auto !important;overflow:visible !important}.events .event-photo img,.event.reverse .event-photo img{width:100% !important;height:auto !important;max-width:100% !important;max-height:none !important;object-fit:initial !important}}
 
-/* ================================================================
-   FINAL EVENT PHOTO RENDERING — COMPLETE IMAGE, ZERO CSS CROP
-   The frame follows the natural height of the supplied photograph.
-   No fixed height, aspect-ratio, cover, or max-height is permitted.
-   ================================================================ */
-
-.events .event{
-  align-items:start !important;
-  min-height:0 !important;
-}
-
+/* FINAL EVENT ARTWORK SAFETY — 22 Aug 2026
+   The safe-hq artwork files contain the complete source image with a visual safety margin.
+   Never crop these event images on desktop or mobile. */
 .events .event-photo,
 .events .event.reverse .event-photo,
-.events .feast-event .event-photo,
-.events .nelangu-event .event-photo{
-  width:100% !important;
-  height:auto !important;
-  min-height:0 !important;
-  max-height:none !important;
-  aspect-ratio:auto !important;
-  padding:0 !important;
-  margin:0 !important;
-  display:block !important;
-  overflow:visible !important;
-  box-sizing:border-box !important;
-  background-color:var(--ivory) !important;
-  background-image:none !important;
-  background-size:auto !important;
-  background-position:center !important;
-  background-repeat:no-repeat !important;
-  border:1px solid rgba(184,154,90,.30) !important;
-  border-radius:2px !important;
-}
-
-.events .event-photo img,
-.events .event.reverse .event-photo img,
-.events .feast-event .event-photo img,
-.events .nelangu-event .event-photo img{
-  display:block !important;
-  width:100% !important;
-  height:auto !important;
-  min-width:0 !important;
-  min-height:0 !important;
-  max-width:100% !important;
-  max-height:none !important;
-  margin:0 !important;
-  padding:0 !important;
-  object-fit:initial !important;
-  object-position:initial !important;
-  transform:none !important;
-  flex:none !important;
-  image-rendering:auto !important;
-}
-
-/* Explicitly neutralise every legacy event background image. */
 .events .event-photo.kasi,
 .events .event-photo.oonjal,
 .events .event-photo.malai,
@@ -832,47 +786,41 @@ header .logo span{
 .events .event-photo.arundhati,
 .events .event-photo.asirvadam,
 .events .event-photo.bhojanam,
-.events .event-photo.nelangu{
-  background-image:none !important;
-  background-size:auto !important;
+.events .event-photo.nelangu {
+  height:auto !important;
+  min-height:0 !important;
+  max-height:none !important;
+  aspect-ratio:auto !important;
+  overflow:visible !important;
+  background:none !important;
+  padding:0 !important;
 }
-
-/* Mobile: the exact same natural-image rule is retained.
-   Nothing is resized to a fixed-height mobile box. */
-@media(max-width:800px){
-  .events .event,
-  .events .event.reverse{
-    align-items:start !important;
-    min-height:0 !important;
-  }
-
+.events .event-photo > img,
+.events .event.reverse .event-photo > img {
+  display:block !important;
+  width:100% !important;
+  height:auto !important;
+  min-height:0 !important;
+  max-height:none !important;
+  max-width:100% !important;
+  object-fit:contain !important;
+  object-position:center !important;
+  margin:0 !important;
+  padding:0 !important;
+}
+@media (max-width:800px) {
   .events .event-photo,
-  .events .event.reverse .event-photo{
-    width:100% !important;
+  .events .event.reverse .event-photo {
     height:auto !important;
     min-height:0 !important;
     max-height:none !important;
     aspect-ratio:auto !important;
-    overflow:visible !important;
-    padding:0 !important;
   }
-
-  .events .event-photo img,
-  .events .event.reverse .event-photo img{
+  .events .event-photo > img,
+  .events .event.reverse .event-photo > img {
     width:100% !important;
     height:auto !important;
-    max-width:100% !important;
     max-height:none !important;
-    object-fit:initial !important;
-  }
-}
-
-@media(max-width:480px){
-  .events .event-photo,
-  .events .event.reverse .event-photo{
-    width:100% !important;
-    height:auto !important;
-    min-height:0 !important;
-    aspect-ratio:auto !important;
+    object-fit:contain !important;
   }
 }
