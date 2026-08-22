@@ -23,12 +23,12 @@
 <meta name="twitter:image:alt" content="Anisha &amp; Srivatsan Wedding Invitation">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=20260822-v2">
+<link rel="stylesheet" href="style.css?v=20260822-v2-printpdf">
 <style>
 
 body.modal-open{overflow:hidden}
 </style>
-<meta name="wedding-invitation-version" content="version2-focused-event-images-no-auspicious-slide-20260822">
+<meta name="wedding-invitation-version" content="version2-print-pdf-language-selection-20260822">
 </head>
 <body>
 <header id="siteNav"><a class="logo" href="#home" aria-label="Anisha & Srivatsan"><span>AS</span></a><nav id="menu">
@@ -138,22 +138,21 @@ body.modal-open{overflow:hidden}
     <h3>Prepare Your Invitation</h3>
     <label for="recipientName">Recipient's Name</label>
     <input id="recipientName" type="text" maxlength="80" placeholder="e.g. Sri & Mrs. Ramesh Kumar">
-    <label for="invitationLanguage">Invitation Language</label>
-    <select id="invitationLanguage"><option value="english">English</option><option value="tamil">Tamil</option></select>
-    <div class="print-options-note">The recipient's name will appear on the cover note/envelope page.</div>
-    <button id="preparePrint" class="button gold" type="button">PREVIEW &amp; PRINT INVITATION</button>
+    <fieldset class="language-options">
+      <legend>Choose Invitation Language</legend>
+      <label class="language-option"><input type="radio" name="invitationLanguage" value="english" checked><span>Option 1&nbsp;&nbsp; English</span></label>
+      <label class="language-option"><input type="radio" name="invitationLanguage" value="tamil"><span>Option 2&nbsp;&nbsp; Tamil</span></label>
+    </fieldset>
+    <div class="print-options-note">The name entered below will be printed on the first page of the selected invitation, next to “Smt. &amp; Sri”.</div>
+    <button id="preparePrint" class="button gold" type="button">GENERATE &amp; PRINT INVITATION</button>
   </div>
 </div>
 
-<section id="printCard" class="print-card" aria-hidden="true">
-  <div class="print-envelope"><div class="print-flower">❈</div><div class="print-envelope-label">With our warmest regards to</div><div class="print-recipient" id="printRecipient">Our Dear Family &amp; Friends</div><div class="print-envelope-note">We would be honoured by your gracious presence at the wedding of</div><div class="print-couple">Anisha &amp; Srivatsan</div><div class="print-date">Sunday, 25 October 2026 · Haryana Bhavan, Secunderabad</div></div>
-  <div class="print-cover-note"><div class="print-flower">❈</div><h1>With Love &amp; Gratitude</h1><p>We joyfully invite you and your family to share in the sacred wedding celebrations of our beloved children.</p><div class="print-couple">Anisha &amp; Srivatsan</div><p class="print-small">Sunday, 25 October 2026<br>Haryana Bhavan, Secunderabad</p></div>
-  <div class="print-invitation-page english-print"><img class="print-card-art" src="assets/traditional-tamil-iyer-print-card.png" alt="English traditional wedding invitation"></div>
-  <div class="print-invitation-page tamil-print" lang="ta"><div class="tamil-frame"><div class="print-flower">❈</div><h1>ஸ்ரீ</h1><h2>திருமண அழைப்பிதழ்</h2><p>ஸ்ரீமதி ஷியாமளா &amp; ஸ்ரீ பி. ஆர். ஸ்ரீநிவாஸ்</p><p>தங்களின் குடும்பத்துடன் வருகை தந்து<br>எங்கள் அன்பு மகள்</p><div class="tamil-names">அனிஷா<br><span>மற்றும்</span><br>ஸ்ரீவத்சன்</div><p>இவர்களின் திருமண வைபவத்தில் கலந்து கொண்டு<br>மணமக்களை ஆசீர்வதிக்குமாறு அன்புடன் அழைக்கின்றோம்.</p><div class="tamil-box"><b>முகூர்த்தம்</b><br>ஞாயிற்றுக்கிழமை, 25 அக்டோபர் 2026<br>காலை 8:00 மணி முதல் 9:30 மணி வரை<br><b>விருச்சிக லக்னம்</b></div><p><b>இடம்</b><br>ஹரியானா பவன் (ஹரியானா சேவா சங்கம்)<br>சரோஜினி தேவி ரோடு, செகந்திராபாத் – 500003</p><p>அன்புடன்<br>மணமக்களின் குடும்பத்தினர்</p></div></div>
-</section>
+<section id="printCard" class="print-card" aria-hidden="true"></section>
 
 <audio id="weddingMusic" loop preload="none" aria-hidden="true"><source src="assets/wedding-music.mp3" type="audio/mpeg"></audio>
 <button id="musicToggle" class="music-toggle" type="button" aria-label="Play wedding music" aria-pressed="false"><span aria-hidden="true">♫</span></button>
 
-<script src="script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+<script src="script.js?v=20260822-printpdf"></script>
 </body></html>

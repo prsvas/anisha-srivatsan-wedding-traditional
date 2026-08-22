@@ -83,16 +83,14 @@ document.querySelectorAll(".slide-down").forEach(link=>link.addEventListener("cl
   if(target){e.preventDefault();target.scrollIntoView({behavior:"smooth",block:"start"});}
 }));
 
-/* Print / Save — recipient + language selection, with envelope and cover note. */
+/* Print / Save — generate the exact uploaded English/Tamil PDF and place the recipient name on page 1. */
 document.addEventListener("DOMContentLoaded",()=>{
   const printButton=document.getElementById("printInvitation");
   const modal=document.getElementById("printOptions");
   const close=document.getElementById("printOptionsClose");
   const prepare=document.getElementById("preparePrint");
   const nameInput=document.getElementById("recipientName");
-  const language=document.getElementById("invitationLanguage");
-  const recipient=document.getElementById("printRecipient");
-  if(!printButton||!modal||!close||!prepare||!nameInput||!language||!recipient)return;
+  if(!printButton||!modal||!close||!prepare||!nameInput)return;
 
   const open=()=>{modal.classList.add("show");modal.setAttribute("aria-hidden","false");document.body.classList.add("modal-open");setTimeout(()=>nameInput.focus(),80)};
   const hide=()=>{modal.classList.remove("show");modal.setAttribute("aria-hidden","true");document.body.classList.remove("modal-open")};
@@ -100,14 +98,56 @@ document.addEventListener("DOMContentLoaded",()=>{
   close.addEventListener("click",hide);
   modal.addEventListener("click",e=>{if(e.target===modal)hide()});
 
-  prepare.addEventListener("click",()=>{
-    recipient.textContent=nameInput.value.trim()||"Our Dear Family & Friends";
-    document.body.classList.add("print-card-active");
-    document.body.classList.toggle("tamil-selected",language.value==="tamil");
-    hide();
-    window.requestAnimationFrame(()=>window.setTimeout(()=>window.print(),180));
+  const getLanguage=()=>document.querySelector('input[name="invitationLanguage"]:checked')?.value||"english";
+  const safeFileName=name=>name.replace(/[^a-z0-9\-_ ]/gi," ").trim().replace(/\s+/g,"_").slice(0,70)||"Recipient";
+
+  prepare.addEventListener("click",async()=>{
+    const name=nameInput.value.trim();
+    if(!name){nameInput.focus();alert("Please enter the recipient's name.");return;}
+    if(!window.PDFLib){alert("The invitation PDF engine is still loading. Please wait a moment and try again.");return;}
+
+    const language=getLanguage();
+    const source=language==="tamil"
+      ? "assets/Anisha_Srivatsan_Wedding_Invitation_Tamil.pdf"
+      : "assets/Anisha_Srivatsan_Wedding_Invitation_English.pdf";
+    const label=language==="tamil"?"Tamil":"English";
+    const original=prepare.textContent;
+    prepare.disabled=true; prepare.textContent="PREPARING INVITATION…";
+
+    try{
+      const bytes=await fetch(source,{cache:"no-store"}).then(r=>{
+        if(!r.ok)throw new Error("Could not load the selected invitation PDF.");
+        return r.arrayBuffer();
+      });
+      const pdf=await PDFLib.PDFDocument.load(bytes);
+      const page=pdf.getPages()[0];
+      const font=await pdf.embedFont(PDFLib.StandardFonts.Helvetica);
+      const pageWidth=page.getWidth();
+      const fontSize=14.5;
+      // The supplied PDF is A4 portrait. The first-page "Smt. & Sri" writing line
+      // starts at approximately x=198pt and has ample space to the right.
+      let size=fontSize;
+      while(font.widthOfTextAtSize(name,size)>250 && size>9){size-=0.5;}
+      page.drawText(name,{x:198,y:408,size,color:PDFLib.rgb(0.20,0.28,0.55),font});
+
+      const out=await pdf.save({useObjectStreams:false});
+      const blob=new Blob([out],{type:"application/pdf"});
+      const url=URL.createObjectURL(blob);
+      const a=document.createElement("a");
+      a.href=url;
+      a.download=`Anisha_Srivatsan_Wedding_Invitation_${label}_${safeFileName(name)}.pdf`;
+      document.body.appendChild(a);a.click();a.remove();
+      hide();
+      // Open the generated PDF so the recipient can immediately use the browser PDF viewer's Print command.
+      setTimeout(()=>{const w=window.open(url,"_blank","noopener,noreferrer"); if(!w) alert("The invitation PDF was generated and downloaded. Please open the downloaded PDF to print it.");},250);
+      setTimeout(()=>URL.revokeObjectURL(url),120000);
+    }catch(err){
+      console.error(err);
+      alert("Unable to generate the invitation. Please check your connection and try again.");
+    }finally{
+      prepare.disabled=false;prepare.textContent=original;
+    }
   });
-  window.addEventListener("afterprint",()=>document.body.classList.remove("print-card-active","tamil-selected"));
 });
 
 /* ADD TO CALENDAR — additive only */

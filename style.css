@@ -730,3 +730,10 @@ header .logo span{
   body.print-card-active.tamil-selected .tamil-print{display:block!important}
   @page{size:A4 portrait;margin:0}
 }
+
+/* Invitation language radio options */
+.language-options{border:0;padding:0;margin:18px 0 4px;display:grid;gap:9px}
+.language-options legend{font:600 11px Inter,Arial,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#6f5a3b;margin-bottom:8px}
+.language-option{display:flex!important;align-items:center;gap:10px;margin:0!important;padding:11px 12px;border:1px solid #c6ae7a;background:#fffaf0;border-radius:4px;cursor:pointer;font:500 14px Inter,Arial,sans-serif!important;letter-spacing:0!important;text-transform:none!important;color:#332b23!important}
+.language-option input{width:auto!important;margin:0!important;accent-color:#7c1f22}
+.language-option:has(input:checked){border-color:#9b7837;background:#f5ead0}
