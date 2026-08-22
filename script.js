@@ -76,7 +76,7 @@ function initWeddingMusic(){
 document.addEventListener("DOMContentLoaded", initWeddingMusic);
 
 
-// Section down-arrow navigation
+/* Section down-arrow navigation */
 document.querySelectorAll(".slide-down").forEach(link=>link.addEventListener("click",e=>{
   const id=link.getAttribute("href");
   const target=id?document.querySelector(id):null;
@@ -125,11 +125,10 @@ document.addEventListener("DOMContentLoaded",()=>{
       const pageWidth=page.getWidth();
       const fontSize=20;
       // Page 1 is prepared to A4 with the artwork filling the page.
-      // The recipient name sits clearly ABOVE the first blue writing line,
-      // rather than on the line itself.
+      // The recipient name is positioned ABOVE the first blue writing line.
       let size=fontSize;
       while(font.widthOfTextAtSize(name,size)>270 && size>15){size-=0.5;}
-      page.drawText(name,{x:195,y:405,size,color:PDFLib.rgb(0.20,0.28,0.55),font});
+      page.drawText(name,{x:195,y:430,size,color:PDFLib.rgb(0.20,0.28,0.55),font});
 
       const out=await pdf.save({useObjectStreams:false});
       const blob=new Blob([out],{type:"application/pdf"});
