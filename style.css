@@ -841,62 +841,49 @@ header .logo span{
 }
 
 /* =========================================================
-   FINAL MALAI MAATRAL PRESENTATION FIX
-   Scoped ONLY to the Malai Maatral event image.
-   The HTML already uses:
-   assets/hq-malai-maatral.jpg
-   so no HTML or JavaScript change is required.
+   MALAI MAATRAL — LANDSCAPE PHOTO ONLY
+   Scoped exclusively to .event-photo.malai.
+   All other event photographs retain their existing CSS.
+   Source image: 1500 × 980 (landscape)
    ========================================================= */
 
-/* Keep the event row aligned while allowing the photo to show fully. */
-.events .event:has(.event-photo.malai) {
-  min-height: 0 !important;
-  align-items: start !important;
-}
-
-/* Remove every fixed-height constraint from this one photo frame. */
 .events .event-photo.malai {
   width: 100% !important;
   height: auto !important;
   min-height: 0 !important;
   max-height: none !important;
-  aspect-ratio: auto !important;
-  padding: 0 !important;
-  overflow: visible !important;
-  display: flex !important;
-  align-items: flex-start !important;
-  justify-content: center !important;
+  aspect-ratio: 1500 / 980 !important;
+  overflow: hidden !important;
+  display: block !important;
   box-sizing: border-box !important;
+  padding: 0 !important;
   background: var(--ivory) !important;
   background-image: none !important;
 }
 
-/* Show the entire source photograph at its natural proportion.
-   Nothing is cropped, stretched or forced into a 320/430px frame. */
 .events .event-photo.malai img {
   display: block !important;
   width: 100% !important;
   height: auto !important;
-  min-width: 0 !important;
-  min-height: 0 !important;
   max-width: 100% !important;
   max-height: none !important;
+  min-width: 0 !important;
+  min-height: 0 !important;
   object-fit: contain !important;
-  object-position: center top !important;
+  object-position: center center !important;
   margin: 0 !important;
   transform: none !important;
-  flex: 0 1 auto !important;
 }
 
-/* Mobile: retain the same complete-image treatment. */
+/* Mobile: keep Malai Maatral landscape; do not alter other photos. */
 @media (max-width: 800px) {
   .events .event-photo.malai {
     width: 100% !important;
     height: auto !important;
     min-height: 0 !important;
     max-height: none !important;
-    aspect-ratio: auto !important;
-    overflow: visible !important;
+    aspect-ratio: 1500 / 980 !important;
+    overflow: hidden !important;
   }
 
   .events .event-photo.malai img {
@@ -905,7 +892,7 @@ header .logo span{
     max-width: 100% !important;
     max-height: none !important;
     object-fit: contain !important;
-    object-position: center top !important;
+    object-position: center center !important;
   }
 }
 
