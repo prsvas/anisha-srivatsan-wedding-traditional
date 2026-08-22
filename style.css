@@ -698,3 +698,35 @@ header .logo span{
     min-height:300px;
   }
 }
+
+/* FINAL POLISH — Sanskrit, high-resolution event art, calendar and invitation preparation */
+.sanskrit-shloka{margin:20px auto 10px;max-width:720px;text-align:center;color:#6d4b20;font-family:"Noto Serif Devanagari","Nirmala UI",serif;font-size:clamp(18px,2.2vw,25px);line-height:1.8;letter-spacing:.02em}
+.shloka-meaning{max-width:680px;margin:0 auto 14px!important;text-align:center;font-style:italic;color:#75684e!important}
+.event-photo{background:#f7f0e1!important}
+.event-photo img{width:100%!important;height:100%!important;max-width:none!important;max-height:none!important;object-fit:contain!important;object-position:center!important;image-rendering:auto!important}
+
+.calendar-actions{margin-top:12px}.calendar-button{background:transparent!important;color:#f7edd9!important;border-color:rgba(255,255,255,.65)!important}
+.calendar-menu{position:fixed;inset:0;background:rgba(20,18,14,.62);display:none;align-items:center;justify-content:center;z-index:1000;padding:20px}
+.calendar-menu.show{display:flex}.calendar-menu-inner{width:min(430px,94vw);background:#f8f0df;color:#332b23;border:1px solid #b99a5a;padding:32px;border-radius:8px;box-shadow:0 20px 60px rgba(0,0,0,.3);position:relative;text-align:center}.calendar-close{position:absolute;right:12px;top:8px;border:0;background:none;font-size:30px;color:#6d5b43;cursor:pointer}.calendar-choice{width:100%;margin-top:10px;padding:13px;border:1px solid #b99a5a;background:#fffaf0;color:#4c3b2b;font:600 12px Inter,Arial,sans-serif;letter-spacing:.1em;text-transform:uppercase;cursor:pointer}
+
+/* Invitation preparation dialog */
+.print-options{position:fixed;inset:0;background:rgba(20,18,14,.68);display:none;align-items:center;justify-content:center;z-index:1200;padding:20px}.print-options.show{display:flex}.print-options-card{position:relative;width:min(500px,94vw);background:#f8f0df;border:1px solid #b99a5a;border-radius:8px;padding:32px;box-shadow:0 25px 80px rgba(0,0,0,.35);color:#332b23}.print-options-card h3{text-align:center;font:500 30px "Cormorant Garamond",Georgia,serif;margin:5px 0 22px}.print-options-card label{display:block;font:600 11px Inter,Arial,sans-serif;letter-spacing:.12em;text-transform:uppercase;margin:14px 0 7px;color:#6f5a3b}.print-options-card input,.print-options-card select{width:100%;box-sizing:border-box;border:1px solid #c6ae7a;background:#fffaf0;padding:12px 13px;font:16px Inter,Arial,sans-serif;color:#332b23;border-radius:4px}.print-options-close{position:absolute;right:12px;top:8px;border:0;background:none;font-size:30px;color:#6d5b43;cursor:pointer}.print-options-note{text-align:center;font-size:12px;color:#766b59;margin:14px 0 20px;line-height:1.5}.print-options-card .button{width:100%;cursor:pointer}
+
+/* Print packet: envelope/cover note + selected invitation language */
+.print-card{display:none}.print-envelope,.print-cover-note,.print-invitation-page{display:none}
+.print-envelope,.print-cover-note{box-sizing:border-box;width:210mm;height:297mm;padding:35mm 24mm;background:#f7efd9;border:8mm solid #f7efd9;outline:1px solid #b99a5a;outline-offset:-7mm;text-align:center;color:#4b3827;align-items:center;justify-content:center;flex-direction:column}
+.print-envelope{background:radial-gradient(circle at 50% 35%,#fff9eb 0,#f7efd9 58%,#ead9b1 100%)}
+.print-flower{font-size:30px;color:#a37d2f;margin-bottom:14px}.print-envelope-label{font:600 12px Inter,Arial,sans-serif;letter-spacing:.18em;text-transform:uppercase}.print-recipient{font:500 42px "Cormorant Garamond",Georgia,serif;color:#7c1f22;margin:22px 0}.print-envelope-note{font:18px "Cormorant Garamond",Georgia,serif;max-width:125mm;line-height:1.6}.print-couple{font:italic 38px "Cormorant Garamond",Georgia,serif;color:#7c1f22;margin:16px 0}.print-date{font:600 12px Inter,Arial,sans-serif;letter-spacing:.08em}.print-cover-note h1{font:500 46px "Cormorant Garamond",Georgia,serif;color:#7c1f22;margin:8px}.print-cover-note p{max-width:125mm;font:21px/1.6 "Cormorant Garamond",Georgia,serif}.print-small{font-size:15px!important}
+.tamil-frame{box-sizing:border-box;width:100%;height:100%;padding:28mm 22mm;background:#fbf0d5;border:3px solid #b88b3a;outline:1px solid #b88b3a;outline-offset:-7mm;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#513c28}.tamil-frame h1{font-family:"Noto Serif Tamil","Nirmala UI",serif;color:#9b6c1e;font-size:28px;margin:0}.tamil-frame h2{font-family:"Noto Serif Tamil","Nirmala UI",serif;color:#7c1f22;font-size:34px;margin:5px 0 20px}.tamil-frame p{font-family:"Noto Serif Tamil","Nirmala UI",serif;font-size:19px;line-height:1.8;margin:9px}.tamil-names{font-family:"Noto Serif Tamil","Nirmala UI",serif;font-size:42px;line-height:1.3;color:#7c1f22;margin:15px 0}.tamil-names span{font-size:22px;color:#4e6a3c}.tamil-box{border:1px solid #b99a5a;padding:13px 24px;margin:10px;font-family:"Noto Serif Tamil","Nirmala UI",serif;font-size:17px;line-height:1.8}
+
+@media print{
+  body.print-card-active .print-options,body.print-card-active #siteNav,body.print-card-active #musicToggle{display:none!important}
+  body.print-card-active .print-card{display:block!important;position:static!important}
+  body.print-card-active .print-envelope,body.print-card-active .print-cover-note{display:flex!important;page-break-after:always;break-after:page}
+  body.print-card-active .print-invitation-page{display:block!important;width:210mm;height:297mm;page-break-after:always;break-after:page;overflow:hidden;position:relative}
+  body.print-card-active .english-print .print-card-art{width:210mm;height:297mm;display:block;object-fit:fill}
+  body.print-card-active .tamil-print{display:none!important}
+  body.print-card-active.tamil-selected .english-print{display:none!important}
+  body.print-card-active.tamil-selected .tamil-print{display:block!important}
+  @page{size:A4 portrait;margin:0}
+}

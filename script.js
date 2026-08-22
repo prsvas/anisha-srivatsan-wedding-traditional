@@ -83,25 +83,31 @@ document.querySelectorAll(".slide-down").forEach(link=>link.addEventListener("cl
   if(target){e.preventDefault();target.scrollIntoView({behavior:"smooth",block:"start"});}
 }));
 
-/* Print / Save: show only the traditional Tamil Iyer invitation in print. */
-document.addEventListener("DOMContentLoaded", () => {
-  const printButton = document.getElementById("printInvitation");
-  if (!printButton) return;
+/* Print / Save — recipient + language selection, with envelope and cover note. */
+document.addEventListener("DOMContentLoaded",()=>{
+  const printButton=document.getElementById("printInvitation");
+  const modal=document.getElementById("printOptions");
+  const close=document.getElementById("printOptionsClose");
+  const prepare=document.getElementById("preparePrint");
+  const nameInput=document.getElementById("recipientName");
+  const language=document.getElementById("invitationLanguage");
+  const recipient=document.getElementById("printRecipient");
+  if(!printButton||!modal||!close||!prepare||!nameInput||!language||!recipient)return;
 
-  printButton.addEventListener("click", (event) => {
-    event.preventDefault();
+  const open=()=>{modal.classList.add("show");modal.setAttribute("aria-hidden","false");document.body.classList.add("modal-open");setTimeout(()=>nameInput.focus(),80)};
+  const hide=()=>{modal.classList.remove("show");modal.setAttribute("aria-hidden","true");document.body.classList.remove("modal-open")};
+  printButton.addEventListener("click",e=>{e.preventDefault();open()});
+  close.addEventListener("click",hide);
+  modal.addEventListener("click",e=>{if(e.target===modal)hide()});
+
+  prepare.addEventListener("click",()=>{
+    recipient.textContent=nameInput.value.trim()||"Our Dear Family & Friends";
     document.body.classList.add("print-card-active");
-
-    window.requestAnimationFrame(() => {
-      window.setTimeout(() => {
-        window.print();
-      }, 150);
-    });
+    document.body.classList.toggle("tamil-selected",language.value==="tamil");
+    hide();
+    window.requestAnimationFrame(()=>window.setTimeout(()=>window.print(),180));
   });
-
-  window.addEventListener("afterprint", () => {
-    document.body.classList.remove("print-card-active");
-  });
+  window.addEventListener("afterprint",()=>document.body.classList.remove("print-card-active","tamil-selected"));
 });
 
 /* ADD TO CALENDAR — additive only */
