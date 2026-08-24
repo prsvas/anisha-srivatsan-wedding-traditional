@@ -953,51 +953,71 @@ header .logo span{
 @media print{.music-toggle,#musicToggle{display:none !important}}
 
 
-/* Combined Part 1 + Part 3 correction — ceremony grouping and family photos */
+/* Combined refinement — larger family portraits */
+.families .family-photo{
+  width:min(100%, 330px)!important;
+  height:auto!important;
+  aspect-ratio:4/3!important;
+  margin:0 auto 22px!important;
+  overflow:hidden!important;
+  border-radius:14px!important;
+}
+.families .family-photo img{
+  display:block!important;
+  width:100%!important;
+  height:100%!important;
+  object-fit:cover!important;
+  object-position:center!important;
+}
+@media(max-width:800px){
+  .families .family-photo{
+    width:min(100%, 320px)!important;
+    aspect-ratio:4/3!important;
+  }
+}
+
+/* Supplied AS coin logo */
+header .logo{
+  width:58px!important;
+  height:58px!important;
+  padding:0!important;
+  border:0!important;
+  background:none!important;
+  box-shadow:none!important;
+  border-radius:50%!important;
+  overflow:hidden!important;
+}
+header .logo img{
+  display:block!important;
+  width:100%!important;
+  height:100%!important;
+  object-fit:cover!important;
+  border-radius:50%!important;
+}
+.closing-logo-coin{
+  width:128px!important;
+  height:128px!important;
+  padding:0!important;
+  border:0!important;
+  background:none!important;
+  box-shadow:none!important;
+  border-radius:50%!important;
+  overflow:hidden!important;
+}
+.closing-logo-coin img{
+  display:block!important;
+  width:100%!important;
+  height:100%!important;
+  object-fit:cover!important;
+  border-radius:50%!important;
+}
 .muhurtham-card .muhurtham-group-divider{
   height:1px;
   margin:8px 22px;
   background:linear-gradient(90deg,transparent,rgba(184,154,90,.45),transparent);
 }
-.families-lead{max-width:680px;margin:0 auto}
-.families-grid{
-  width:min(100%,900px);
-  margin:46px auto 0;
-  display:grid;
-  grid-template-columns:repeat(2,minmax(0,1fr));
-  gap:26px;
-}
-.family-card{
-  text-align:center;
-  padding:24px 26px 30px;
-  border-top:1px solid rgba(155,124,62,.34);
-  border-bottom:1px solid rgba(155,124,62,.20);
-}
-.family-photo-small{
-  width:220px;
-  height:140px;
-  margin:0 auto 22px;
-  overflow:hidden;
-  background:var(--ivory);
-}
-.family-photo-small img{
-  display:block;
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  object-position:center;
-}
-.family-card .eyebrow{margin-bottom:14px}
-.family-card h3{
-  margin:0;
-  font-family:"Cormorant Garamond","Baskerville","Times New Roman",serif;
-  font-size:clamp(26px,3vw,36px);
-  line-height:1.08;
-  font-weight:500;
-}
-.family-card p{margin:12px 0 0;font-size:.9rem;letter-spacing:.05em;opacity:.75}
-@media(max-width:700px){
-  .families-grid{grid-template-columns:1fr;gap:14px;margin-top:34px}
-  .family-card{padding:22px 18px 25px}
-  .family-photo-small{width:190px;height:120px;margin-bottom:18px}
+@media(max-width:800px){
+  header .logo{width:52px!important;height:52px!important}
+  .closing-logo-coin{width:112px!important;height:112px!important}
+  .muhurtham-card .muhurtham-group-divider{margin:6px 15px}
 }
