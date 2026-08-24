@@ -62,45 +62,93 @@ document.addEventListener("DOMContentLoaded",()=>{
   initWhatsAppChooser(); initNavigation(); initReveal(); initCounters(); initOpenInvitation();
 });
 
-
 function initOpenInvitation(){
+  const hero=document.getElementById("home");
+  const target=document.getElementById("tradition");
   const music=document.getElementById("weddingMusic");
   const toggle=document.getElementById("musicToggle");
-  const openButton=[...document.querySelectorAll("a,button")].find(el=>
-    (el.textContent||"").trim().toUpperCase().includes("OPEN INVITATION")
-  );
+  if(!hero || !target) return;
+
+  // Create the button here, rather than relying on another JS file.
+  // It is a BUTTON (not an anchor), so it cannot trigger the site's generic
+  // #anchor navigation and cannot jump to the Couple section.
+  let openButton=document.getElementById("openInvitation");
+  if(!openButton){
+    openButton=document.createElement("button");
+    openButton.id="openInvitation";
+    openButton.type="button";
+    openButton.className="open-invitation-button";
+    openButton.textContent="OPEN INVITATION";
+    openButton.setAttribute("aria-label","Open Invitation");
+    const heroContent=hero.querySelector(".hero-content");
+    (heroContent || hero).appendChild(openButton);
+  }
 
   const setMusicState=(playing)=>{
     if(!toggle)return;
     toggle.classList.toggle("playing",playing);
     toggle.setAttribute("aria-pressed",String(playing));
     toggle.setAttribute("aria-label",playing?"Turn wedding music off":"Turn wedding music on");
+    toggle.title=playing?"Music ON — click to switch off":"Music OFF — click to switch on";
+    const icon=toggle.querySelector("span");
+    if(icon) icon.textContent=playing?"♫":"🔇";
   };
 
-  if(music&&toggle){
-    toggle.addEventListener("click",async()=>{
-      if(music.paused){
-        try{await music.play();setMusicState(true);}catch(e){console.warn("Wedding music could not start:",e);}
-      }else{
-        music.pause();setMusicState(false);
-      }
-    });
+  if(music){
+    music.volume=1;
+    music.autoplay=true;
+    // Attempt audible autoplay. Browsers may block this until interaction.
+    music.play().then(()=>setMusicState(true)).catch(()=>setMusicState(false));
     music.addEventListener("play",()=>setMusicState(true));
     music.addEventListener("pause",()=>setMusicState(false));
-    // Attempt ON by default. Browsers may block audible autoplay until a user gesture.
-    music.volume=1;
-    music.play().then(()=>setMusicState(true)).catch(()=>setMusicState(false));
+    music.addEventListener("ended",()=>setMusicState(false));
   }
 
-  if(openButton){
-    openButton.addEventListener("click",async e=>{
+  if(toggle && music){
+    toggle.addEventListener("click",async e=>{
       e.preventDefault();
-      e.stopImmediatePropagation();
-      if(music){
-        try{await music.play();setMusicState(true);}catch(err){console.warn("Wedding music could not start:",err);}
+      e.stopPropagation();
+      if(music.paused){
+        try{await music.play();setMusicState(true);}catch(err){setMusicState(false);}
+      }else{
+        music.pause();
+        setMusicState(false);
       }
-      const target=document.getElementById("tradition");
-      if(target) target.scrollIntoView({behavior:"smooth",block:"start"});
-    },true);
+    });
   }
+
+  openButton.addEventListener("click",async e=>{
+    e.preventDefault();
+    e.stopPropagation();
+    if(music){
+      try{await music.play();setMusicState(true);}catch(err){}
+    }
+    // ONLY the immediately following section. Never target #couple.
+    target.scrollIntoView({behavior:"smooth",block:"start"});
+  });
+
+  const style=document.createElement("style");
+  style.textContent=`
+    .open-invitation-button{
+      position:relative!important;
+      z-index:999!important;
+      display:inline-flex!important;
+      align-items:center!important;
+      justify-content:center!important;
+      margin:28px auto 0!important;
+      padding:14px 30px!important;
+      min-width:190px!important;
+      border:1px solid #e4d3a3!important;
+      border-radius:3px!important;
+      background:rgba(48,72,61,.94)!important;
+      color:#fff!important;
+      font:600 11px Inter,Arial,sans-serif!important;
+      letter-spacing:.18em!important;
+      cursor:pointer!important;
+      box-shadow:0 8px 24px rgba(0,0,0,.22)!important;
+    }
+    .open-invitation-button:hover{transform:translateY(-2px)!important;background:#30483d!important}
+    .open-invitation-button:focus-visible{outline:2px solid #e4d3a3!important;outline-offset:4px!important}
+  `;
+  document.head.appendChild(style);
 }
