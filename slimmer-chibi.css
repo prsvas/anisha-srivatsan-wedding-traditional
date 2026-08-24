@@ -1,5 +1,4 @@
-/* SLIMMER CHIBI RITUAL ARTWORK — isolated visual override */
-
+/* Existing slimmer-chibi.css content — preserved */
 .events .event-photo img {
   width: 100% !important;
   height: auto !important;
@@ -9,8 +8,6 @@
   display: block !important;
 }
 
-/* The Auspicious Beginning artwork is a complete designed page image.
-   Hide the old HTML copy area so the wording is never duplicated. */
 .traditional-opening-inner.traditional-opening-image-only {
   display: block !important;
   width: 100% !important;
@@ -31,4 +28,69 @@
   object-fit: contain !important;
   object-position: center !important;
   display: block !important;
+}
+
+/* FINAL REQUESTED RSVP LOGO
+   Logo appears on the LEFT side of the RSVP section, slightly larger,
+   without changing the RSVP HTML/content. */
+.rsvp {
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+.rsvp::before {
+  content: "";
+  position: absolute;
+  left: clamp(28px, 6vw, 95px);
+  top: 50%;
+  width: clamp(175px, 18vw, 250px);
+  height: clamp(175px, 18vw, 250px);
+  transform: translateY(-50%);
+  background: url("assets/AS-logo-dark-gold-2026.png") center / contain no-repeat;
+  z-index: 1;
+  pointer-events: none;
+  filter: drop-shadow(0 10px 20px rgba(0,0,0,.22));
+}
+
+.rsvp > div {
+  position: relative;
+  z-index: 2;
+}
+
+@media (max-width: 1000px) {
+  .rsvp::before {
+    width: 165px;
+    height: 165px;
+    left: 20px;
+    opacity: .92;
+  }
+}
+
+@media (max-width: 800px) {
+  .rsvp {
+    padding-top: 240px !important;
+  }
+
+  .rsvp::before {
+    left: 50%;
+    top: 38px;
+    width: 150px;
+    height: 150px;
+    transform: translateX(-50%);
+  }
+}
+
+/* FAMILY PHOTO — preserve full image, improve presentation */
+.families .family:first-child .family-photo {
+  background: var(--ivory) !important;
+}
+
+.families .family:first-child .family-photo img {
+  width: 100% !important;
+  height: auto !important;
+  max-width: 100% !important;
+  object-fit: contain !important;
+  object-position: center !important;
+  display: block !important;
+  image-rendering: auto !important;
 }
