@@ -58,7 +58,6 @@ function initWeddingMusic(){
     toggle.textContent=playing?"SOUND ON":"SOUND OFF";
   };
 
-  /* The requested initial state is SOUND ON, even if browser autoplay is blocked. */
   if(toggle){
     toggle.textContent="SOUND ON";
     toggle.classList.add("playing");
@@ -94,8 +93,6 @@ function initWeddingMusic(){
   music.play().then(()=>{
     setState(true);removeFallback();
   }).catch(()=>{
-    /* Browser autoplay policy may block audible autoplay.
-       First user interaction will start the music. */
     setState(true);
     window.addEventListener("pointerdown",startFirstInteraction,true);
     window.addEventListener("touchstart",startFirstInteraction,true);
