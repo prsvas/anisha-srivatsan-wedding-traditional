@@ -1,0 +1,15 @@
+/* FINAL FAMILY PHOTO FRAMING */
+.family-photo.bride-family img {
+  width: 116% !important;
+  max-width: none !important;
+  height: auto !important;
+  object-fit: contain !important;
+  object-position: center !important;
+}
+.family-photo.groom-family img {
+  width: 92% !important;
+  max-width: 92% !important;
+  height: auto !important;
+  object-fit: contain !important;
+  object-position: center !important;
+}
