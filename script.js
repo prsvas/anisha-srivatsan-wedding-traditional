@@ -67,8 +67,9 @@ function initWeddingMusic(){
     if(!toggle)return;
     toggle.classList.toggle("playing",playing);
     toggle.setAttribute("aria-pressed",String(playing));
-    toggle.setAttribute("aria-label",playing?"Turn wedding music off":"Turn wedding music on");
-    toggle.title=playing?"Music ON — click to switch off":"Music OFF — click to switch on";
+    toggle.setAttribute("aria-label",playing?"Sound on — click to turn sound off":"Sound off — click to turn sound on");
+    toggle.title=playing?"SOUND ON — click to switch off":"SOUND OFF — click to switch on";
+    toggle.textContent=playing?"SOUND ON":"SOUND OFF";
   };
 
   music.volume=1;
@@ -112,8 +113,6 @@ function initWeddingMusic(){
   music.addEventListener("play",()=>setState(true));
   music.addEventListener("pause",()=>setState(false));
 
-  /* First try true audible autoplay. If the browser blocks it,
-     the visitor's first tap/click/key press starts the music. */
   music.play()
     .then(()=>{
       setState(true);
