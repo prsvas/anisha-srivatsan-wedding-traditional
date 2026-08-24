@@ -1,120 +1,47 @@
-/* FINAL FIX — DO NOT CHANGE EVENT CONTENT, ONLY ORDER IT.
-   Required order:
-   Sacred Traditions: Kasi Yathra → Malai Maatral → Oonjal → Kanyadanam → ...
-   Muhurtham:         Kasi Yathra → Malai Maatral → Oonjal → Kanyadanam → ...
+/* FINAL DIRECT HTML ORDER FIX
+   Use only if you do not replace index.html directly.
+   Required:
+   Kasi Yathra -> Malai Maatral -> Oonjal
 */
 (function () {
-  'use strict';
-
-  const wanted = [
-    'Kasi Yathra',
-    'Malai Maatral',
-    'Oonjal',
-    'Kanyadanam',
-    'Mangalya Dharanam',
-    'Sapthapadi',
-    'Ammi Midhithal',
-    'Metti Dharanam',
-    'Arundhati Darshan',
-    'Asirvadam',
-    'Traditional Tamil Iyer Bhojanam',
-    'Nelangu'
-  ];
-
-  function norm(s) {
-    return (s || '').replace(/\s+/g, ' ').trim().toLowerCase();
-  }
-
-  function fixSacredTraditions() {
+  function reorder() {
     const events = document.querySelector('.events');
-    if (!events) return false;
+    if (!events) return;
 
-    const cards = Array.from(events.children).filter(el => el.classList.contains('event'));
-    if (cards.length < 3) return false;
+    const card = name => Array.from(events.children).find(x =>
+      x.matches('.event') && x.querySelector('h3') &&
+      x.querySelector('h3').textContent.trim().toLowerCase() === name.toLowerCase()
+    );
 
-    const map = new Map();
-    cards.forEach(card => {
-      const h = card.querySelector('h3');
-      if (h) map.set(norm(h.textContent), card);
-    });
+    const kasi = card('Kasi Yathra');
+    const malai = card('Malai Maatral');
+    const oonjal = card('Oonjal');
 
-    // Rebuild the event sequence physically. This moves each complete
-    // image + heading + description card together.
-    let previous = null;
-    wanted.forEach((name, index) => {
-      const card = map.get(norm(name));
-      if (!card) return;
-      if (previous) previous.after(card);
-      else events.insertBefore(card, events.firstElementChild);
-      previous = card;
+    if (kasi && malai && oonjal) {
+      events.insertBefore(kasi, events.firstElementChild);
+      events.insertBefore(malai, kasi.nextElementSibling);
+      events.insertBefore(oonjal, malai.nextElementSibling);
 
-      const number = card.querySelector('.event-number');
-      if (number) number.textContent = String(index + 1).padStart(2, '0');
-
-      // Alternate layout according to the new order.
-      card.classList.toggle('reverse', index % 2 === 1);
-    });
-
-    return true;
-  }
-
-  function fixMuhurtham() {
-    const card = document.querySelector('.muhurtham-card');
-    if (!card) return false;
-
-    const rows = Array.from(card.querySelectorAll('.muhurtham-row'));
-    const map = new Map();
-
-    rows.forEach(row => {
-      const text = norm(row.textContent);
-      wanted.forEach(name => {
-        if (text.includes(norm(name))) map.set(norm(name), row);
+      Array.from(events.children).filter(x => x.matches('.event')).forEach((x,i) => {
+        const n=x.querySelector('.event-number');
+        if(n)n.textContent=String(i+1).padStart(2,'0');
+        x.classList.toggle('reverse', i%2===1);
       });
-    });
+    }
 
-    const heading = Array.from(card.querySelectorAll('.muhurtham-program-title'))
-      .find(el => norm(el.textContent).includes('before the muhurtham'));
+    const mc = document.querySelector('.muhurtham-card');
+    if (!mc) return;
+    const rows = Array.from(mc.querySelectorAll('.muhurtham-row'));
+    const row = name => rows.find(x => x.textContent.toLowerCase().includes(name.toLowerCase()));
+    const heading = Array.from(mc.querySelectorAll('.muhurtham-program-title'))
+      .find(x => x.textContent.trim().toLowerCase() === 'before the muhurtham');
 
-    if (!heading) return false;
-
-    // Only reorder the three pre-Muhurtham ceremonies here.
-    const firstThree = wanted.slice(0, 3).map(name => map.get(norm(name))).filter(Boolean);
-    if (firstThree.length !== 3) return false;
-
-    firstThree.forEach((row, i) => {
-      const b = row.querySelector('b');
-      if (b) b.textContent = String(i + 1).padStart(2, '0');
-    });
-
-    // Place them directly after BEFORE THE MUHURTHAM.
-    let anchor = heading;
-    firstThree.forEach(row => {
-      anchor.after(row);
-      anchor = row;
-    });
-
-    return true;
+    const a=row('Kasi Yathra'), b=row('Malai Maatral'), c=row('Oonjal');
+    if (heading && a && b && c) {
+      heading.after(a,b,c);
+      [a,b,c].forEach((x,i)=>{const n=x.querySelector('b');if(n)n.textContent=String(i+1).padStart(2,'0')});
+    }
   }
-
-  function apply() {
-    fixSacredTraditions();
-    fixMuhurtham();
-  }
-
-  // Run repeatedly for a short period because the invitation may populate
-  // or modify sections after initial DOM load.
-  function start() {
-    apply();
-    let count = 0;
-    const timer = setInterval(function () {
-      apply();
-      if (++count >= 20) clearInterval(timer);
-    }, 250);
-  }
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', start);
-  } else {
-    start();
-  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',reorder);
+  else reorder();
 })();
