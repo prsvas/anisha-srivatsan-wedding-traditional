@@ -1,5 +1,5 @@
-
 /* SLIMMER CHIBI RITUAL ARTWORK — isolated visual override */
+
 .events .event-photo img {
   width: 100% !important;
   height: auto !important;
@@ -8,10 +8,27 @@
   object-position: center !important;
   display: block !important;
 }
-.traditional-art img {
-  width: 100%;
-  height: auto;
-  max-width: 100%;
-  object-fit: contain;
-  display: block;
+
+/* The Auspicious Beginning artwork is a complete designed page image.
+   Hide the old HTML copy area so the wording is never duplicated. */
+.traditional-opening-inner.traditional-opening-image-only {
+  display: block !important;
+  width: 100% !important;
+  max-width: 1180px !important;
+  margin: 0 auto !important;
+}
+
+.traditional-opening-image-only .traditional-art {
+  width: 100% !important;
+  max-width: 1180px !important;
+  margin: 0 auto !important;
+}
+
+.traditional-opening-image-only .traditional-art img {
+  width: 100% !important;
+  height: auto !important;
+  max-width: 100% !important;
+  object-fit: contain !important;
+  object-position: center !important;
+  display: block !important;
 }

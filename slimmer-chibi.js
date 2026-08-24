@@ -1,6 +1,7 @@
-
 /* SLIMMER CHIBI RITUAL ARTWORK — 2026-08-24
-   Replaces only the illustrated ritual artwork with the 13 prepared assets.
+   Replaces only the 12 illustrated ritual event artworks.
+   The Auspicious Beginning is a complete image in index.html, so no
+   separate JavaScript replacement or duplicate text is used there.
    Regular bride/groom photographs and all other invitation imagery remain untouched.
 */
 document.addEventListener("DOMContentLoaded", () => {
@@ -15,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
     "metti": "assets/metti-dharanam.jpg",
     "arundhati": "assets/arundhati-darshan.jpg",
     "asirvadam": "assets/asirvadam.jpg",
-    "feast": "assets/tamil-iyer-bhojanam.jpg",
+    "bhojanam": "assets/tamil-iyer-bhojanam.jpg",
     "nelangu": "assets/nelangu.jpg"
   };
 
@@ -29,11 +30,4 @@ document.addEventListener("DOMContentLoaded", () => {
       img.decoding = "async";
     }
   });
-
-  // The auspicious artwork is used by the opening traditional-art section.
-  const auspicious = document.querySelector(".traditional-art img");
-  if (auspicious) {
-    auspicious.src = "assets/auspicious-beginning.jpg";
-    auspicious.removeAttribute("srcset");
-  }
 });
