@@ -1,0 +1,16 @@
+/* FINAL FAMILY PHOTO FRAMING
+   Bride family: modest zoom-in.
+   Groom family: modest zoom-out to recover edge hands.
+*/
+.family-photo.bride-family img {
+  width: 116% !important;
+  max-width: none !important;
+  transform: translateX(0) !important;
+  object-fit: contain !important;
+}
+.family-photo.groom-family img {
+  width: 92% !important;
+  max-width: 92% !important;
+  transform: none !important;
+  object-fit: contain !important;
+}
