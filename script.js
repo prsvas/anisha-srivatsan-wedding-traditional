@@ -57,12 +57,12 @@ document.addEventListener("DOMContentLoaded",()=>{
   initWhatsAppChooser(); initNavigation(); initReveal(); initCounters();
 });
 
-
-/* Wedding music — ON by default; toggle switches OFF/ON. */
+/* Wedding music — ON by default; autoplay fallback starts on first user interaction. */
 function initWeddingMusic(){
   const music=document.getElementById("weddingMusic");
   const toggle=document.getElementById("musicToggle");
   if(!music)return;
+
   const setState=(playing)=>{
     if(!toggle)return;
     toggle.classList.toggle("playing",playing);
@@ -70,17 +70,61 @@ function initWeddingMusic(){
     toggle.setAttribute("aria-label",playing?"Turn wedding music off":"Turn wedding music on");
     toggle.title=playing?"Music ON — click to switch off":"Music OFF — click to switch on";
   };
+
   music.volume=1;
+
+  const removeAutoplayFallback=()=>{
+    window.removeEventListener("pointerdown",startOnFirstInteraction,true);
+    window.removeEventListener("touchstart",startOnFirstInteraction,true);
+    window.removeEventListener("keydown",startOnFirstInteraction,true);
+  };
+
+  const startOnFirstInteraction=async()=>{
+    if(!music.paused){
+      removeAutoplayFallback();
+      return;
+    }
+    try{
+      await music.play();
+      setState(true);
+      removeAutoplayFallback();
+    }catch(e){
+      setState(false);
+    }
+  };
+
   if(toggle){
-    toggle.addEventListener("click",async()=>{
-      if(music.paused){try{await music.play();setState(true);}catch(e){setState(false);}}
-      else{music.pause();setState(false);}
+    toggle.addEventListener("click",async(e)=>{
+      e.stopPropagation();
+      if(music.paused){
+        try{
+          await music.play();
+          setState(true);
+          removeAutoplayFallback();
+        }catch(e){setState(false);}
+      }else{
+        music.pause();
+        setState(false);
+      }
     });
   }
+
   music.addEventListener("play",()=>setState(true));
   music.addEventListener("pause",()=>setState(false));
-  // Attempt audible autoplay immediately. Browser policy may block it.
-  music.play().then(()=>setState(true)).catch(()=>setState(false));
+
+  /* First try true audible autoplay. If the browser blocks it,
+     the visitor's first tap/click/key press starts the music. */
+  music.play()
+    .then(()=>{
+      setState(true);
+      removeAutoplayFallback();
+    })
+    .catch(()=>{
+      setState(false);
+      window.addEventListener("pointerdown",startOnFirstInteraction,true);
+      window.addEventListener("touchstart",startOnFirstInteraction,true);
+      window.addEventListener("keydown",startOnFirstInteraction,true);
+    });
 }
 
 document.addEventListener("DOMContentLoaded",initWeddingMusic);
