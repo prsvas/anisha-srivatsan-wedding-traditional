@@ -101,7 +101,7 @@ function initWeddingMusic(){
 }
 document.addEventListener("DOMContentLoaded",initWeddingMusic);
 
-/* PRINT / SAVE TRADITIONAL INVITATION — download + print fix */
+/* PRINT / SAVE TRADITIONAL INVITATION — corrected recipient-name placement + print/download */
 function initPrintInvitation(){
   const button =
     document.getElementById("printInvitation") ||
@@ -139,6 +139,26 @@ function initPrintInvitation(){
   const hide=()=>{modal.hidden=true;document.body.classList.remove("modal-open")};
   const message=(s,error=false)=>{status.textContent=s;status.classList.toggle("error",error)};
 
+
+  function loadPdfLib(){
+    return new Promise((resolve,reject)=>{
+      if(window.PDFLib && window.PDFLib.PDFDocument){resolve();return}
+      const existing=document.querySelector('script[data-pdf-lib="invitation"]');
+      if(existing){
+        existing.addEventListener("load",resolve,{once:true});
+        existing.addEventListener("error",()=>reject(new Error("Unable to load PDF library")),{once:true});
+        return;
+      }
+      const tag=document.createElement("script");
+      tag.src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js";
+      tag.async=true;
+      tag.dataset.pdfLib="invitation";
+      tag.onload=resolve;
+      tag.onerror=()=>reject(new Error("Unable to load PDF library"));
+      document.head.appendChild(tag);
+    });
+  }
+
   async function prepare(language){
     const name=input.value.trim();
     if(!name){message("Please enter the recipient name.",true);input.focus();return}
@@ -149,23 +169,37 @@ function initPrintInvitation(){
       if(!r.ok) throw new Error("PDF unavailable");
       const bytes=new Uint8Array(await r.arrayBuffer());
 
-      /* If PDF-LIB is already present on the invitation, add the name to page 1.
-         Otherwise preserve the supplied PDF unchanged and still download/open it. */
+      /* Ensure PDF-LIB is available. The previous version silently skipped
+         the name overlay when PDF-LIB was not loaded, which is why the typed
+         name was not visible in the generated PDF. */
+      if(!window.PDFLib || !window.PDFLib.PDFDocument){
+        await loadPdfLib();
+      }
+
       let output=bytes;
       if(window.PDFLib && window.PDFLib.PDFDocument){
         const {PDFDocument,StandardFonts,rgb}=window.PDFLib;
         const doc=await PDFDocument.load(bytes);
         const page=doc.getPages()[0];
         const font=await doc.embedFont(StandardFonts.HelveticaBold);
-        let size=20;
-        const max=page.getWidth()*.82;
-        while(font.widthOfTextAtSize(name,size)>max && size>10) size--;
-        const tw=font.widthOfTextAtSize(name,size);
+
+        /* Exact recipient-name position on the supplied A4 artwork:
+           immediately to the right of “Smt. & Sri” and one line above the
+           first blue writing line. */
+        let size=15;
+        const startX=page.getWidth()*.33;
+        const maxWidth=page.getWidth()*.45;
+        while(font.widthOfTextAtSize(name,size)>maxWidth && size>10) size--;
+        const textWidth=font.widthOfTextAtSize(name,size);
+
         page.drawText(name,{
-          x:(page.getWidth()-tw)/2,
-          y:page.getHeight()*.655,
-          size,font,color:rgb(.12,.12,.12)
+          x:startX,
+          y:page.getHeight()*.505,
+          size,
+          font,
+          color:rgb(.12,.12,.12)
         });
+
         output=new Uint8Array(await doc.save());
       }
 
