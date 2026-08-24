@@ -953,11 +953,13 @@ header .logo span{
 @media print{.music-toggle,#musicToggle{display:none !important}}
 
 
-/* Part 3 — Family section refinement */
-.families-lead{
-  max-width:680px;
-  margin:0 auto;
+/* Combined Part 1 + Part 3 correction — ceremony grouping and family photos */
+.muhurtham-card .muhurtham-group-divider{
+  height:1px;
+  margin:8px 22px;
+  background:linear-gradient(90deg,transparent,rgba(184,154,90,.45),transparent);
 }
+.families-lead{max-width:680px;margin:0 auto}
 .families-grid{
   width:min(100%,900px);
   margin:46px auto 0;
@@ -967,13 +969,25 @@ header .logo span{
 }
 .family-card{
   text-align:center;
-  padding:34px 26px 30px;
+  padding:24px 26px 30px;
   border-top:1px solid rgba(155,124,62,.34);
   border-bottom:1px solid rgba(155,124,62,.20);
 }
-.family-card .eyebrow{
-  margin-bottom:14px;
+.family-photo-small{
+  width:220px;
+  height:140px;
+  margin:0 auto 22px;
+  overflow:hidden;
+  background:var(--ivory);
 }
+.family-photo-small img{
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center;
+}
+.family-card .eyebrow{margin-bottom:14px}
 .family-card h3{
   margin:0;
   font-family:"Cormorant Garamond","Baskerville","Times New Roman",serif;
@@ -981,17 +995,9 @@ header .logo span{
   line-height:1.08;
   font-weight:500;
 }
-.family-card p{
-  margin:12px 0 0;
-  font-size:.9rem;
-  letter-spacing:.05em;
-  opacity:.75;
-}
+.family-card p{margin:12px 0 0;font-size:.9rem;letter-spacing:.05em;opacity:.75}
 @media(max-width:700px){
-  .families-grid{
-    grid-template-columns:1fr;
-    gap:14px;
-    margin-top:34px;
-  }
-  .family-card{padding:28px 18px 25px}
+  .families-grid{grid-template-columns:1fr;gap:14px;margin-top:34px}
+  .family-card{padding:22px 18px 25px}
+  .family-photo-small{width:190px;height:120px;margin-bottom:18px}
 }
