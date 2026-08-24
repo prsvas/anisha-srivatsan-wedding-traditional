@@ -100,3 +100,106 @@ function initWeddingMusic(){
   });
 }
 document.addEventListener("DOMContentLoaded",initWeddingMusic);
+
+/* PRINT / SAVE TRADITIONAL INVITATION — download + print fix */
+function initPrintInvitation(){
+  const button =
+    document.getElementById("printInvitation") ||
+    document.getElementById("printInvitationBtn") ||
+    document.querySelector('[data-action="print-invitation"]') ||
+    document.querySelector('[data-print-invitation]');
+  if(!button || button.dataset.printHandlerAttached==="true") return;
+  button.dataset.printHandlerAttached="true";
+
+  const englishPdf="assets/Anisha_Srivatsan_Wedding_Invitation_English.pdf";
+  const tamilPdf="assets/Anisha_Srivatsan_Wedding_Invitation_Tamil.pdf";
+
+  const modal=document.createElement("div");
+  modal.id="printInvitationModal";
+  modal.hidden=true;
+  modal.innerHTML=`
+    <div class="print-invitation-backdrop" data-print-close></div>
+    <div class="print-invitation-dialog" role="dialog" aria-modal="true" aria-labelledby="printInvitationTitle">
+      <button type="button" class="print-invitation-close" data-print-close aria-label="Close">×</button>
+      <h2 id="printInvitationTitle">Traditional Wedding Invitation</h2>
+      <p>Enter the recipient name and select the invitation language.</p>
+      <label for="printRecipientName">Recipient Name</label>
+      <input id="printRecipientName" type="text" autocomplete="name" placeholder="Enter recipient name">
+      <div class="print-language-options">
+        <button type="button" data-print-language="english">Option 1 — English</button>
+        <button type="button" data-print-language="tamil">Option 2 — Tamil</button>
+      </div>
+      <div id="printInvitationStatus" class="print-invitation-status" aria-live="polite"></div>
+    </div>`;
+  document.body.appendChild(modal);
+
+  const input=modal.querySelector("#printRecipientName");
+  const status=modal.querySelector("#printInvitationStatus");
+  const show=()=>{modal.hidden=false;document.body.classList.add("modal-open");status.textContent="";setTimeout(()=>input.focus(),20)};
+  const hide=()=>{modal.hidden=true;document.body.classList.remove("modal-open")};
+  const message=(s,error=false)=>{status.textContent=s;status.classList.toggle("error",error)};
+
+  async function prepare(language){
+    const name=input.value.trim();
+    if(!name){message("Please enter the recipient name.",true);input.focus();return}
+    const url=language==="tamil"?tamilPdf:englishPdf;
+    message("Preparing the invitation…");
+    try{
+      const r=await fetch(url,{cache:"no-store"});
+      if(!r.ok) throw new Error("PDF unavailable");
+      const bytes=new Uint8Array(await r.arrayBuffer());
+
+      /* If PDF-LIB is already present on the invitation, add the name to page 1.
+         Otherwise preserve the supplied PDF unchanged and still download/open it. */
+      let output=bytes;
+      if(window.PDFLib && window.PDFLib.PDFDocument){
+        const {PDFDocument,StandardFonts,rgb}=window.PDFLib;
+        const doc=await PDFDocument.load(bytes);
+        const page=doc.getPages()[0];
+        const font=await doc.embedFont(StandardFonts.HelveticaBold);
+        let size=20;
+        const max=page.getWidth()*.82;
+        while(font.widthOfTextAtSize(name,size)>max && size>10) size--;
+        const tw=font.widthOfTextAtSize(name,size);
+        page.drawText(name,{
+          x:(page.getWidth()-tw)/2,
+          y:page.getHeight()*.655,
+          size,font,color:rgb(.12,.12,.12)
+        });
+        output=new Uint8Array(await doc.save());
+      }
+
+      const blob=new Blob([output],{type:"application/pdf"});
+      const objectUrl=URL.createObjectURL(blob);
+      const safe=name.replace(/[<>:"/\\\\|?*\\x00-\\x1F]/g,"").replace(/\\s+/g,"_").slice(0,80)||"Guest";
+      const a=document.createElement("a");
+      a.href=objectUrl;
+      a.download=`Anisha_Srivatsan_Wedding_Invitation_${safe}.pdf`;
+      document.body.appendChild(a);a.click();a.remove();
+
+      const w=window.open(objectUrl,"_blank");
+      message(w?"PDF downloaded and opened for printing.":"PDF downloaded. Open the downloaded PDF to print.");
+      setTimeout(()=>URL.revokeObjectURL(objectUrl),120000);
+    }catch(e){
+      console.error(e);
+      message("Unable to prepare the invitation. Please try again.",true);
+    }
+  }
+
+  button.addEventListener("click",e=>{e.preventDefault();show()});
+  modal.querySelectorAll("[data-print-close]").forEach(x=>x.addEventListener("click",hide));
+  modal.querySelectorAll("[data-print-language]").forEach(x=>x.addEventListener("click",()=>prepare(x.dataset.printLanguage)));
+  document.addEventListener("keydown",e=>{if(e.key==="Escape"&&!modal.hidden)hide()});
+
+  const style=document.createElement("style");
+  style.textContent=`
+    .print-invitation-backdrop{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:9998}
+    .print-invitation-dialog{position:fixed;z-index:9999;left:50%;top:50%;transform:translate(-50%,-50%);width:min(92vw,480px);padding:28px;border-radius:16px;background:#fff;box-shadow:0 20px 60px rgba(0,0,0,.3);font-family:inherit}
+    .print-invitation-dialog h2{margin:0 32px 10px 0}.print-invitation-dialog label{display:block;margin:18px 0 7px;font-weight:600}
+    #printRecipientName{width:100%;box-sizing:border-box;padding:12px 14px;border:1px solid #ccc;border-radius:8px;font-size:16px}
+    .print-language-options{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}.print-language-options button{flex:1 1 180px;padding:12px 14px;border:0;border-radius:8px;cursor:pointer;font-weight:600}
+    .print-invitation-close{position:absolute;right:14px;top:10px;border:0;background:transparent;font-size:28px;cursor:pointer}
+    .print-invitation-status{margin-top:15px;min-height:1.3em}.print-invitation-status.error{color:#a32626}`;
+  document.head.appendChild(style);
+}
+document.addEventListener("DOMContentLoaded",initPrintInvitation);
