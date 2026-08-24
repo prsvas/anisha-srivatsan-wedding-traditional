@@ -953,18 +953,51 @@ header .logo span{
 @media print{.music-toggle,#musicToggle{display:none !important}}
 
 
-/* Part 1 — Iyer ceremony grouping refinement */
-.muhurtham-card .muhurtham-program-title{
-  margin-top:0;
+/* Part 2 — AS monogram with Tamil script */
+header .logo{
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:center!important;
+  justify-content:center!important;
+  line-height:1!important;
 }
-.muhurtham-card .muhurtham-group-divider{
-  height:1px;
-  margin:8px 22px;
-  background:linear-gradient(90deg,transparent,rgba(184,154,90,.45),transparent);
+header .logo .logo-as-mark{
+  display:block;
+  line-height:.86;
 }
-.muhurtham-card .muhurtham-program-title + .muhurtham-row{
-  border-top:0;
+header .logo .logo-tamil-mark{
+  display:block;
+  margin-top:.16em;
+  font-family:"Noto Serif Tamil","Latha","Tamil Sangam MN",serif;
+  font-size:.30em;
+  font-weight:500;
+  line-height:1.1;
+  letter-spacing:.01em;
+  white-space:nowrap;
+}
+
+.closing-logo-coin{
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:center!important;
+  justify-content:center!important;
+  line-height:1!important;
+}
+.closing-logo-coin .logo-as-mark{
+  display:block;
+  line-height:.86;
+}
+.closing-logo-coin .logo-tamil-mark{
+  display:block;
+  margin-top:.20em;
+  font-family:"Noto Serif Tamil","Latha","Tamil Sangam MN",serif;
+  font-size:.27em;
+  font-weight:500;
+  line-height:1.1;
+  letter-spacing:.01em;
+  white-space:nowrap;
 }
 @media(max-width:800px){
-  .muhurtham-card .muhurtham-group-divider{margin:6px 15px}
+  header .logo .logo-tamil-mark{font-size:.28em}
+  .closing-logo-coin .logo-tamil-mark{font-size:.25em}
 }
