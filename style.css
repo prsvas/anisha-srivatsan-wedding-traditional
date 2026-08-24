@@ -951,3 +951,20 @@ header .logo span{
   }
 }
 @media print{.music-toggle,#musicToggle{display:none !important}}
+
+
+/* Part 1 — Iyer ceremony grouping refinement */
+.muhurtham-card .muhurtham-program-title{
+  margin-top:0;
+}
+.muhurtham-card .muhurtham-group-divider{
+  height:1px;
+  margin:8px 22px;
+  background:linear-gradient(90deg,transparent,rgba(184,154,90,.45),transparent);
+}
+.muhurtham-card .muhurtham-program-title + .muhurtham-row{
+  border-top:0;
+}
+@media(max-width:800px){
+  .muhurtham-card .muhurtham-group-divider{margin:6px 15px}
+}
