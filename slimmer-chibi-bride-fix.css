@@ -1,0 +1,37 @@
+/* FINAL MEET THE BRIDE FIX
+   The bride section is a background-image DIV in the existing invitation.
+   The previous fixed 580px height / cover behaviour cropped the portrait.
+   This override gives the DIV the exact portrait aspect ratio and uses contain.
+*/
+
+/* Desktop */
+.person .photo.bride{
+  width:100% !important;
+  height:auto !important;
+  min-height:0 !important;
+  aspect-ratio:941 / 1672 !important;
+  background-image:url("assets/bride.jpg") !important;
+  background-size:contain !important;
+  background-repeat:no-repeat !important;
+  background-position:center top !important;
+  background-color:transparent !important;
+  overflow:visible !important;
+  display:block !important;
+  padding:0 !important;
+  box-sizing:border-box !important;
+}
+
+/* Mobile */
+@media(max-width:800px){
+  .person .photo.bride{
+    width:100% !important;
+    height:auto !important;
+    min-height:0 !important;
+    aspect-ratio:941 / 1672 !important;
+    background-image:url("assets/bride.jpg") !important;
+    background-size:contain !important;
+    background-repeat:no-repeat !important;
+    background-position:center top !important;
+    overflow:visible !important;
+  }
+}
