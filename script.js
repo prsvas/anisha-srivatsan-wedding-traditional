@@ -6,7 +6,7 @@ function initNavigation(){
   const header=document.querySelector("header");
   const onScroll=()=>header?.classList.toggle("scrolled",window.scrollY>30);
   window.addEventListener("scroll",onScroll,{passive:true}); onScroll();
-  document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener("click",e=>{
+  document.querySelectorAll('a[href^="#"]:not(.slide-down)').forEach(a=>a.addEventListener("click",e=>{
     const id=a.getAttribute("href"); if(!id||id==="#")return;
     const target=document.querySelector(id);
     if(target){e.preventDefault();target.scrollIntoView({behavior:"smooth",block:"start"});}
@@ -80,12 +80,41 @@ function initWeddingMusic(){
 
 document.addEventListener("DOMContentLoaded",initWeddingMusic);
 
-/* Section down-arrow navigation */
-document.querySelectorAll(".slide-down").forEach(link=>link.addEventListener("click",e=>{
-  const id=link.getAttribute("href");
-  const target=id?document.querySelector(id):null;
-  if(target){e.preventDefault();target.scrollIntoView({behavior:"smooth",block:"start"});}
-}));
+/* Section down-arrow navigation — FIXED
+ *
+ * Each down arrow now goes to the IMMEDIATELY NEXT top-level section,
+ * rather than relying on the old hard-coded href values. This prevents
+ * skipped sections and makes every arrow behave consistently.
+ *
+ * Nothing else in the invitation is changed.
+ */
+document.addEventListener("DOMContentLoaded",()=>{
+  document.querySelectorAll(".slide-down").forEach(link=>{
+    link.addEventListener("click",e=>{
+      e.preventDefault();
+      e.stopPropagation();
+
+      const current=link.closest("section");
+      if(!current)return;
+
+      let next=current.nextElementSibling;
+      while(next && !next.matches("section, .rsvp, .closing")){
+        next=next.nextElementSibling;
+      }
+
+      if(next){
+        const header=document.querySelector("header");
+        const headerHeight=header ? header.getBoundingClientRect().height : 0;
+        const targetY=next.getBoundingClientRect().top + window.scrollY - headerHeight;
+
+        window.scrollTo({
+          top:Math.max(0,targetY),
+          behavior:"smooth"
+        });
+      }
+    },{passive:false});
+  });
+});
 
 /*
  * PRINT / DOWNLOAD — SINGLE INVITATION ONLY
@@ -104,7 +133,6 @@ document.addEventListener("DOMContentLoaded",()=>{
 
   if(!printButton||!modal||!close||!prepare||!nameInput)return;
 
-  /* Remove the old English/Tamil choice completely from the user interface. */
   const languageOptions=modal.querySelector(".language-options");
   if(languageOptions)languageOptions.remove();
 
@@ -181,12 +209,6 @@ document.addEventListener("DOMContentLoaded",()=>{
 
       const font=await pdf.embedFont(PDFLib.StandardFonts.HelveticaBold);
 
-      /*
-       * A4 source: 595 x 842 points.
-       * The first blue line begins around x=200 and y=432.
-       * The name is intentionally placed ABOVE that line, beside
-       * "Smt. & Sri", matching the supplied physical invitation.
-       */
       const x=200;
       const y=442;
       const maxWidth=265;
@@ -217,7 +239,6 @@ document.addEventListener("DOMContentLoaded",()=>{
 
       hide();
 
-      /* Open the generated personalised PDF for immediate printing. */
       setTimeout(()=>{
         const win=window.open(url,"_blank","noopener,noreferrer");
         if(!win){
