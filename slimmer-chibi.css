@@ -150,3 +150,21 @@
     width: 22%;
   }
 }
+
+
+/* FINAL GALLERY IMAGE SCALE FIX — reduce the photographs inside the existing frames.
+   The frame size stays unchanged; both complete photographs remain visible. */
+.gallery-image {
+  padding: 5% !important;
+  background-origin: content-box !important;
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  overflow: hidden !important;
+}
+
+@media (max-width: 700px) {
+  .gallery-image {
+    padding: 5% !important;
+  }
+}
