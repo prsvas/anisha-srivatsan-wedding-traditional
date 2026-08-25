@@ -90,3 +90,33 @@
     background-size: 100% 100% !important;
   }
 }
+
+
+/* ============================================================
+   SECTION DOWN-ARROW — PRECISION SCROLL FIX
+   Only affects the small down-arrow navigation.
+   The fixed header was causing the destination section to land
+   partially underneath the header. No layout/content is changed.
+   ============================================================ */
+
+html {
+  scroll-padding-top: 70px;
+}
+
+section[id],
+.rsvp,
+.closing {
+  scroll-margin-top: 70px;
+}
+
+@media (max-width: 800px) {
+  html {
+    scroll-padding-top: 62px;
+  }
+
+  section[id],
+  .rsvp,
+  .closing {
+    scroll-margin-top: 62px;
+  }
+}
