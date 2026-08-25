@@ -94,3 +94,59 @@
   display: block !important;
   image-rendering: auto !important;
 }
+
+/* GALLERY — uniform portrait frame WITHOUT cropping or changing pixels.
+   Both gallery panels use the same 864:1821 display ratio and contain the
+   complete original artwork. */
+.gallery {
+  align-items: stretch !important;
+}
+
+.gallery-image {
+  position: relative !important;
+  width: 100% !important;
+  height: auto !important;
+  min-height: 0 !important;
+  aspect-ratio: 864 / 1821 !important;
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  overflow: hidden !important;
+}
+
+/* New AS logo on Gallery-1 only.
+   This is a CSS overlay: gallery-1.jpg itself is not edited, retouched,
+   recompressed, cropped, or otherwise changed. */
+.gallery-image.g1 {
+  position: relative !important;
+}
+
+.gallery-image.g1::after {
+  content: "";
+  position: absolute;
+  left: 5.5%;
+  top: 7%;
+  width: 21%;
+  aspect-ratio: 1 / 1;
+  background: url("assets/AS-logo-dark-gold-2026.png") center / contain no-repeat;
+  z-index: 5;
+  pointer-events: none;
+  filter: drop-shadow(0 5px 9px rgba(0,0,0,.22));
+}
+
+@media (max-width: 700px) {
+  .gallery {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+  }
+
+  .gallery-image {
+    aspect-ratio: 864 / 1821 !important;
+  }
+
+  .gallery-image.g1::after {
+    left: 5.5%;
+    top: 6%;
+    width: 22%;
+  }
+}
