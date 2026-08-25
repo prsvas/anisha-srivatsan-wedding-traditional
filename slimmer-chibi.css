@@ -168,3 +168,33 @@
     padding: 5% !important;
   }
 }
+
+/* FINAL FIX — SHOW BOTH GALLERY PHOTOGRAPHS IN FULL
+   The gallery cards retain their existing frame size. The actual <img>
+   elements are scaled down proportionally when necessary, never cropped. */
+.gallery-image{
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  overflow:hidden !important;
+  box-sizing:border-box !important;
+}
+.gallery-image img{
+  display:block !important;
+  width:auto !important;
+  height:auto !important;
+  max-width:100% !important;
+  max-height:100% !important;
+  object-fit:contain !important;
+  object-position:center !important;
+  flex:0 0 auto !important;
+}
+
+/* Keep Gallery-1 logo attached to the card, not the photograph itself. */
+.gallery-image.g1::after{
+  left:5.5% !important;
+  top:7% !important;
+  width:21% !important;
+  height:auto !important;
+  aspect-ratio:1/1 !important;
+}
