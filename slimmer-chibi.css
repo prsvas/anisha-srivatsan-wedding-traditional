@@ -95,9 +95,9 @@
   image-rendering: auto !important;
 }
 
-/* GALLERY — uniform portrait frame WITHOUT cropping or changing pixels.
-   Both gallery panels use the same 864:1821 display ratio and contain the
-   complete original artwork. */
+/* GALLERY — restore the original gallery-1 portrait frame.
+   Gallery-1 remains at its original size; Gallery-2 is contained within
+   the same frame without stretching or cropping either photograph. */
 .gallery {
   align-items: stretch !important;
 }
@@ -107,7 +107,7 @@
   width: 100% !important;
   height: auto !important;
   min-height: 0 !important;
-  aspect-ratio: 864 / 1821 !important;
+  aspect-ratio: 2 / 3 !important;
   background-size: contain !important;
   background-repeat: no-repeat !important;
   background-position: center !important;
@@ -141,7 +141,7 @@
   }
 
   .gallery-image {
-    aspect-ratio: 864 / 1821 !important;
+    aspect-ratio: 2 / 3 !important;
   }
 
   .gallery-image.g1::after {
