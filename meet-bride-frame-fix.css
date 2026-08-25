@@ -1,0 +1,31 @@
+/* MEET THE BRIDE — ORIGINAL PHOTOGRAPH / FRAME-ONLY FIX
+   Original supplied photograph: 941 x 1672.
+   This changes only the webpage frame. The photograph itself is untouched.
+*/
+
+.person .photo.bride {
+  width: 100% !important;
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  aspect-ratio: 941 / 1672 !important;
+  background-image: url("assets/bride.jpg") !important;
+  background-size: 100% 100% !important;
+  background-repeat: no-repeat !important;
+  background-position: center top !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+  box-sizing: border-box !important;
+}
+
+@media (max-width: 800px) {
+  .person .photo.bride {
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    aspect-ratio: 941 / 1672 !important;
+    background-size: 100% 100% !important;
+    background-position: center top !important;
+  }
+}
