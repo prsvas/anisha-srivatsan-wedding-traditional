@@ -1,200 +1,55 @@
-/* Existing slimmer-chibi.css content — preserved */
-.events .event-photo img {
-  width: 100% !important;
-  height: auto !important;
-  max-width: 100% !important;
-  object-fit: contain !important;
-  object-position: center !important;
-  display: block !important;
-}
-
-.traditional-opening-inner.traditional-opening-image-only {
-  display: block !important;
-  width: 100% !important;
-  max-width: 1180px !important;
-  margin: 0 auto !important;
-}
-
-.traditional-opening-image-only .traditional-art {
-  width: 100% !important;
-  max-width: 1180px !important;
-  margin: 0 auto !important;
-}
-
-.traditional-opening-image-only .traditional-art img {
-  width: 100% !important;
-  height: auto !important;
-  max-width: 100% !important;
-  object-fit: contain !important;
-  object-position: center !important;
-  display: block !important;
-}
-
-/* FINAL REQUESTED RSVP LOGO
-   Logo appears on the LEFT side of the RSVP section, slightly larger,
-   without changing the RSVP HTML/content. */
-.rsvp {
-  position: relative !important;
-  overflow: hidden !important;
-}
-
-.rsvp::before {
-  content: "";
-  position: absolute;
-  left: clamp(28px, 6vw, 95px);
-  top: 50%;
-  width: clamp(175px, 18vw, 250px);
-  height: clamp(175px, 18vw, 250px);
-  transform: translateY(-50%);
-  background: url("assets/AS-logo-dark-gold-2026.png") center / contain no-repeat;
-  z-index: 1;
-  pointer-events: none;
-  filter: drop-shadow(0 10px 20px rgba(0,0,0,.22));
-}
-
-.rsvp > div {
-  position: relative;
-  z-index: 2;
-}
-
-@media (max-width: 1000px) {
-  .rsvp::before {
-    width: 165px;
-    height: 165px;
-    left: 20px;
-    opacity: .92;
-  }
-}
-
-@media (max-width: 800px) {
-  .rsvp {
-    padding-top: 240px !important;
-  }
-
-  .rsvp::before {
-    left: 50%;
-    top: 38px;
-    width: 150px;
-    height: 150px;
-    transform: translateX(-50%);
-  }
-}
-
-/* FAMILY PHOTO — preserve full image, improve presentation */
-.families .family:first-child .family-photo {
-  background: var(--ivory) !important;
-}
-
-.families .family:first-child .family-photo img {
-  width: 100% !important;
-  height: auto !important;
-  max-width: 100% !important;
-  object-fit: contain !important;
-  object-position: center !important;
-  display: block !important;
-  image-rendering: auto !important;
-}
-
-/* GALLERY — restore the original gallery-1 portrait frame.
-   Gallery-1 remains at its original size; Gallery-2 is contained within
-   the same frame without stretching or cropping either photograph. */
-.gallery {
-  align-items: stretch !important;
-}
-
-.gallery-image {
-  position: relative !important;
-  width: 100% !important;
-  height: auto !important;
-  min-height: 0 !important;
-  aspect-ratio: 2 / 3 !important;
-  background-size: contain !important;
-  background-repeat: no-repeat !important;
-  background-position: center !important;
-  overflow: hidden !important;
-}
-
-/* New AS logo on Gallery-1 only.
-   This is a CSS overlay: gallery-1.jpg itself is not edited, retouched,
-   recompressed, cropped, or otherwise changed. */
-.gallery-image.g1 {
-  position: relative !important;
-}
-
-.gallery-image.g1::after {
-  content: "";
-  position: absolute;
-  left: 5.5%;
-  top: 7%;
-  width: 21%;
-  aspect-ratio: 1 / 1;
-  background: url("assets/AS-logo-dark-gold-2026.png") center / contain no-repeat;
-  z-index: 5;
-  pointer-events: none;
-  filter: drop-shadow(0 5px 9px rgba(0,0,0,.22));
-}
-
-@media (max-width: 700px) {
-  .gallery {
-    grid-template-columns: 1fr !important;
-    gap: 20px !important;
-  }
-
-  .gallery-image {
-    aspect-ratio: 2 / 3 !important;
-  }
-
-  .gallery-image.g1::after {
-    left: 5.5%;
-    top: 6%;
-    width: 22%;
-  }
-}
-
-
-/* FINAL GALLERY IMAGE SCALE FIX — reduce the photographs inside the existing frames.
-   The frame size stays unchanged; both complete photographs remain visible. */
-.gallery-image {
-  padding: 5% !important;
-  background-origin: content-box !important;
-  background-size: contain !important;
-  background-repeat: no-repeat !important;
-  background-position: center !important;
-  overflow: hidden !important;
-}
-
-@media (max-width: 700px) {
-  .gallery-image {
-    padding: 5% !important;
-  }
-}
-
-/* FINAL FIX — SHOW BOTH GALLERY PHOTOGRAPHS IN FULL
-   The gallery cards retain their existing frame size. The actual <img>
-   elements are scaled down proportionally when necessary, never cropped. */
-.gallery-image{
-  display:flex !important;
-  align-items:center !important;
-  justify-content:center !important;
-  overflow:hidden !important;
-  box-sizing:border-box !important;
-}
-.gallery-image img{
+/* FINAL GALLERY — ONE COMPOSITE PHOTO ONLY
+   The supplied composite image is displayed as-is.
+   Gallery-2 is removed from visual display.
+   No cropping, stretching, or distortion is applied to the new image.
+*/
+.gallery{
   display:block !important;
-  width:auto !important;
-  height:auto !important;
-  max-width:100% !important;
-  max-height:100% !important;
-  object-fit:contain !important;
-  object-position:center !important;
-  flex:0 0 auto !important;
+  width:100% !important;
+  max-width:1100px !important;
+  margin:70px auto 0 !important;
 }
 
-/* Keep Gallery-1 logo attached to the card, not the photograph itself. */
-.gallery-image.g1::after{
-  left:5.5% !important;
-  top:7% !important;
-  width:21% !important;
+.gallery .gallery-image:first-child{
+  display:block !important;
+  width:100% !important;
   height:auto !important;
-  aspect-ratio:1/1 !important;
+  aspect-ratio:auto !important;
+  padding:0 !important;
+  overflow:visible !important;
+  background:none !important;
+  border:0 !important;
+}
+
+.gallery .gallery-image:first-child img{
+  display:none !important;
+}
+
+/* Use the supplied composite exactly as the single gallery image. */
+.gallery .gallery-image:first-child::before{
+  content:"" !important;
+  display:block !important;
+  width:100% !important;
+  height:auto !important;
+  aspect-ratio:941 / 1672 !important;
+  background:url("assets/gallery-final.png") center center / contain no-repeat !important;
+}
+
+/* Remove the former second gallery photograph completely. */
+.gallery .gallery-image:nth-child(2){
+  display:none !important;
+}
+
+.gallery .gallery-image.g1::after{
+  display:none !important;
+}
+
+@media(max-width:700px){
+  .gallery{
+    width:100% !important;
+    margin-top:50px !important;
+  }
+  .gallery .gallery-image:first-child::before{
+    aspect-ratio:941 / 1672 !important;
+  }
 }
