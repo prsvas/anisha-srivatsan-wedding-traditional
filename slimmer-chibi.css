@@ -9,7 +9,6 @@
   max-width:1100px !important;
   margin:70px auto 0 !important;
 }
-
 .gallery .gallery-image:first-child{
   display:block !important;
   width:100% !important;
@@ -20,12 +19,7 @@
   background:none !important;
   border:0 !important;
 }
-
-.gallery .gallery-image:first-child img{
-  display:none !important;
-}
-
-/* Use the supplied composite exactly as the single gallery image. */
+.gallery .gallery-image:first-child img{display:none !important;}
 .gallery .gallery-image:first-child::before{
   content:"" !important;
   display:block !important;
@@ -34,22 +28,65 @@
   aspect-ratio:941 / 1672 !important;
   background:url("assets/gallery-final.png") center center / contain no-repeat !important;
 }
-
-/* Remove the former second gallery photograph completely. */
-.gallery .gallery-image:nth-child(2){
-  display:none !important;
-}
-
-.gallery .gallery-image.g1::after{
-  display:none !important;
-}
-
+.gallery .gallery-image:nth-child(2){display:none !important;}
+.gallery .gallery-image.g1::after{display:none !important;}
 @media(max-width:700px){
-  .gallery{
-    width:100% !important;
-    margin-top:50px !important;
+  .gallery{width:100% !important;margin-top:50px !important;}
+  .gallery .gallery-image:first-child::before{aspect-ratio:941 / 1672 !important;}
+}
+
+
+/* ============================================================
+   MEET THE BRIDE — FINAL FULL FRAME
+   Supplied artwork ratio: 941 x 1672.
+   The existing style.css defines .person .photo at a fixed
+   height and .bride as a background image. This override makes
+   the frame use the exact supplied portrait ratio and prevents
+   cover-cropping.
+   ============================================================ */
+
+.person .photo.bride,
+.people .person .photo.bride {
+  width: 100% !important;
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  aspect-ratio: 941 / 1672 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  overflow: hidden !important;
+  box-sizing: border-box !important;
+  display: block !important;
+
+  background-image: url("assets/bride.jpg") !important;
+  background-repeat: no-repeat !important;
+  background-position: center top !important;
+  background-size: 100% 100% !important;
+  background-color: transparent !important;
+}
+
+@media(max-width:800px) {
+  .person .photo.bride,
+  .people .person .photo.bride {
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    aspect-ratio: 941 / 1672 !important;
+    background-image: url("assets/bride.jpg") !important;
+    background-repeat: no-repeat !important;
+    background-position: center top !important;
+    background-size: 100% 100% !important;
+    overflow: hidden !important;
   }
-  .gallery .gallery-image:first-child::before{
-    aspect-ratio:941 / 1672 !important;
+}
+
+@media(max-width:480px) {
+  .person .photo.bride,
+  .people .person .photo.bride {
+    width: 100% !important;
+    height: auto !important;
+    aspect-ratio: 941 / 1672 !important;
+    background-size: 100% 100% !important;
   }
 }
