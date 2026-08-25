@@ -1,0 +1,35 @@
+/* MEET THE BRIDE — FULL PHOTOGRAPH FRAME FIX
+   Replace the existing bride.jpg only; all other invitation elements remain unchanged.
+   The complete portrait is shown without crop or distortion.
+*/
+.person .photo.bride{
+  height:auto !important;
+  min-height:0 !important;
+  aspect-ratio:auto !important;
+  background-image:none !important;
+  background-color:transparent !important;
+  overflow:visible !important;
+  display:flex !important;
+  align-items:flex-start !important;
+  justify-content:center !important;
+}
+.person .photo.bride::before{
+  content:"";
+  display:block;
+  width:100%;
+  aspect-ratio:941 / 1672;
+  background:url("assets/bride.jpg") center center / contain no-repeat;
+}
+@media(max-width:800px){
+  .person .photo.bride{
+    height:auto !important;
+    min-height:0 !important;
+    aspect-ratio:auto !important;
+  }
+  .person .photo.bride::before{
+    width:100%;
+    aspect-ratio:941 / 1672;
+    background-size:contain !important;
+    background-position:center !important;
+  }
+}
