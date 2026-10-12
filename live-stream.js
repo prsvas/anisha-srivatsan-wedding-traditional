@@ -1,6 +1,6 @@
 /* Anisha & Srivatsan — additive Watch Live slide.
    When the YouTube link is available, paste it between the quotes below. */
-const WEDDING_LIVE_STREAM_URL = '';
+const WEDDING_LIVE_STREAM_URL = 'https://www.youtube.com/live/FnZbMB9xyvM?feature=shared';
 
 (function addWeddingLiveStream() {
   const rsvp = document.getElementById('rsvp');
